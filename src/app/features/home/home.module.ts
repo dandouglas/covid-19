@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AngularMaterialModule } from '../../angular-material-module';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { DashboardModule } from '../dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
     AngularMaterialModule,
     CommonModule,
     HttpClientModule,
+    NgxEchartsModule,
+    DashboardModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
