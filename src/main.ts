@@ -1,4 +1,4 @@
-import 'hammerjs';
+
 import 'echarts-gl';
 
 import { enableProdMode } from '@angular/core';

@@ -26,6 +26,6 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbEvaIconsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
