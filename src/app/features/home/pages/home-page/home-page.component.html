@@ -3,5 +3,9 @@
   <p>Total Deaths: {{ totalDeaths$ | async }}</p>
   <p>Total Deaths Today: {{ totalDeathsToday$ | async }}</p>
   <p>Total Recovered: {{ totalRecovered$ | async }}</p>
+  <p>Country with most total cases: {{ (countryWithHighestTotalDeaths$ | async).country }}</p>
+  <p>Country with most cases today: </p>
+  <p>Country with most deaths cases: </p>
+  <p>Country with most deaths today: </p>
   <cv-country-stats [stats]="data$ | async"></cv-country-stats>
 </main>
