@@ -7,7 +7,7 @@ interface CaseStats {
 }
 
 interface DeathStats {
-  new: number;
+  new: string;
   total: number;
 }
 

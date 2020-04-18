@@ -1,5 +1,7 @@
 <main>
   <p>Total Cases: {{ totalCases$ | async }}</p>
   <p>Total Deaths: {{ totalDeaths$ | async }}</p>
+  <p>Total Deaths Today: {{ totalDeathsToday$ | async }}</p>
+  <p>Total Recovered: {{ totalRecovered$ | async }}</p>
   <cv-country-stats [stats]="data$ | async"></cv-country-stats>
 </main>
