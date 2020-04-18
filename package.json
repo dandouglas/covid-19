@@ -25,6 +25,7 @@
     "@ngrx/store": "^8.6.0",
     "@ngrx/store-devtools": "^8.6.0",
     "echarts": "^4.7.0",
+    "echarts-gl": "^1.1.1",
     "hammerjs": "^2.0.8",
     "ngx-echarts": "^4.2.2",
     "rxjs": "~6.4.0",
