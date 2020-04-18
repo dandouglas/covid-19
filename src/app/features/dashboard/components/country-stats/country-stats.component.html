@@ -1,0 +1,23 @@
+<ng-container *ngFor="let stat of stats">
+
+  <mat-card>
+    <mat-card-title>{{ stat.country }}</mat-card-title>
+    <mat-card-content>
+      <h3>Cases</h3>
+      <ul>
+        <li>{{ stat.cases.new }}</li>
+        <li>{{ stat.cases.active }}</li>
+        <li>{{ stat.cases.critical }}</li>
+        <li>{{ stat.cases.recovered }}</li>
+        <li>{{ stat.cases.total }}</li>
+      </ul>
+
+      <h3>Deaths</h3>
+      <ul>
+        <li>{{ stat.deaths.new }}</li>
+        <li>{{ stat.deaths.total }}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+
+</ng-container>
