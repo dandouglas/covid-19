@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeModule } from './home/home.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [],
@@ -8,7 +9,8 @@ import { HomeModule } from './home/home.module';
     CommonModule
   ],
   exports: [
-    HomeModule
+    HomeModule,
+    DashboardModule,
   ]
 })
 export class FeaturesModule { }
