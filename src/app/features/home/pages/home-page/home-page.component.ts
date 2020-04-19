@@ -3,6 +3,8 @@ import { HomeApiService } from '../../services/home-api.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CountryStat } from '../../../dashboard/models/country-stat';
+import { HomeFacadeService } from '../../services/home-facade.service.ts.service';
+import { HomePageActions } from '../../store/actions/home-page.actions';
 
 @Component({
   selector: 'cv-home-page',
@@ -20,9 +22,11 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private homeApiService: HomeApiService,
+    private homeFacadeService: HomeFacadeService,
   ) { }
 
   ngOnInit() {
+    this.homeFacadeService.dispatch(HomePageActions.enterPage());
     this.data$ = this.homeApiService.getWorldData();
 
     this.all$ = this.data$.pipe(
