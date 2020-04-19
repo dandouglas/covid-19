@@ -27,10 +27,7 @@ export class HomePageComponent implements OnInit {
     this.homeFacadeService.dispatch(HomePageActions.enterPage());
     this.data$ = this.homeFacadeService.getData();
 
-    this.all$ = this.data$.pipe(
-      map((data: CountryStat[]) => data
-        .find(stat => stat.country === 'All')
-        ));
+    this.all$ = this.homeFacadeService.getDataForAllCountries();
 
     this.totalDeaths$ = this.data$.pipe(
       map((data: CountryStat[]) => data
