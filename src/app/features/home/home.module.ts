@@ -8,6 +8,7 @@ import { DashboardModule } from '../dashboard/dashboard.module';
 import { NbCardModule } from '@nebular/theme';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../../shared/shared.module';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SharedModule } from '../../shared/shared.module';
     NbCardModule,
     FlexLayoutModule,
     SharedModule,
+    NbEvaIconsModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

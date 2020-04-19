@@ -1,8 +1,9 @@
 <main>
   <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2rem">
     <nb-card accent="danger">
-      <nb-card-header>Total Cases</nb-card-header>
+      <nb-card-header><nb-icon icon="globe-outline"></nb-icon>Total Cases</nb-card-header>
       <nb-card-body>
+        <nb-icon icon="globe-outline"></nb-icon>
         <cv-stat-details [value]="totalCases$ | async" title="Total Cases"></cv-stat-details>
       </nb-card-body>
     </nb-card>
