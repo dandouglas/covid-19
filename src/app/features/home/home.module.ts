@@ -7,6 +7,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { NbCardModule } from '@nebular/theme';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DashboardModule,
     NbCardModule,
     FlexLayoutModule,
+    SharedModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
