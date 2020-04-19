@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeApiService } from '../../services/home-api.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CountryStat } from '../../../dashboard/models/country-stat';
@@ -21,13 +20,12 @@ export class HomePageComponent implements OnInit {
   all$: Observable<CountryStat>;
 
   constructor(
-    private homeApiService: HomeApiService,
     private homeFacadeService: HomeFacadeService,
   ) { }
 
   ngOnInit() {
     this.homeFacadeService.dispatch(HomePageActions.enterPage());
-    this.data$ = this.homeApiService.getWorldData();
+    this.data$ = this.homeFacadeService.getData();
 
     this.all$ = this.data$.pipe(
       map((data: CountryStat[]) => data
