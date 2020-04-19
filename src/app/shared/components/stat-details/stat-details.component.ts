@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'cv-stat-details',
   templateUrl: './stat-details.component.html',
-  styleUrls: ['./stat-details.component.scss']
+  styleUrls: ['./stat-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatDetailsComponent implements OnInit {
 
@@ -11,11 +12,13 @@ export class StatDetailsComponent implements OnInit {
   title: string;
 
   @Input()
-  value: string;
+  value: number;
+  formattedVal: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.formattedVal = this.value.toLocaleString();
   }
 
 }

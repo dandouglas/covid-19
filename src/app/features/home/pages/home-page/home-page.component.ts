@@ -16,6 +16,7 @@ export class HomePageComponent implements OnInit {
   totalRecovered$: Observable<string>;
   totalDeathsToday$: Observable<string>;
   countryWithHighestTotalDeaths$: Observable<CountryStat>;
+  all$: Observable<CountryStat>;
 
   constructor(
     private homeApiService: HomeApiService,
@@ -23,6 +24,11 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     this.data$ = this.homeApiService.getWorldData();
+
+    this.all$ = this.data$.pipe(
+      map((data: CountryStat[]) => data
+        .find(stat => stat.country === 'All')
+        ));
 
     this.totalDeaths$ = this.data$.pipe(
       map((data: CountryStat[]) => data

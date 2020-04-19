@@ -1,12 +1,25 @@
 <main>
+
   <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2rem">
-    <nb-card accent="danger">
-      <nb-card-header><nb-icon icon="globe-outline"></nb-icon>Total Cases</nb-card-header>
-      <nb-card-body>
-        <nb-icon icon="globe-outline"></nb-icon>
-        <cv-stat-details [value]="totalCases$ | async" title="Total Cases"></cv-stat-details>
-      </nb-card-body>
-    </nb-card>
+
+    <ng-container *ngIf="(all$ | async) as all">
+      <nb-card accent="danger">
+        <nb-card-header>
+          <nb-icon icon="globe-outline"></nb-icon>Total Cases
+        </nb-card-header>
+        <nb-card-body>
+          <nb-icon icon="globe-outline"></nb-icon>
+          <div fxLayout="row" fxLayoutAlign="space-around center" class="all-cases">
+            <cv-stat-details [value]="all.cases.total" title="Total Cases"></cv-stat-details>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <cv-stat-details [value]="all.deaths.total" title="Total Deaths"></cv-stat-details>
+            <cv-stat-details [value]="all.cases.recovered" title="Total Recovered"></cv-stat-details>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </ng-container>
+
     <nb-card accent="warning">
       <nb-card-header>Active Cases</nb-card-header>
       <nb-card-body>{{ totalDeaths$ | async }}</nb-card-body>
