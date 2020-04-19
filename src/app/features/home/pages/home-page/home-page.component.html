@@ -21,8 +21,14 @@
     </ng-container>
 
     <nb-card accent="warning">
-      <nb-card-header>Active Cases</nb-card-header>
-      <nb-card-body>{{ totalDeaths$ | async }}</nb-card-body>
+      <nb-card-header>Today</nb-card-header>
+      <div fxLayout="row" fxLayoutAlign="space-around center" class="all-cases">
+        <cv-stat-details title="Country With The Most Cases"></cv-stat-details>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <cv-stat-details title="Country With The Most Deaths"></cv-stat-details>
+        <cv-stat-details title="Total Recovered"></cv-stat-details>
+      </div>
     </nb-card>
 
     <nb-card accent="primary">
@@ -30,10 +36,7 @@
       <nb-card-body>{{ totalRecovered$ | async }}</nb-card-body>
     </nb-card>
   </div>
-  <!-- <p>Total Cases: {{ totalCases$ | async }}</p>
-  <p>Total Deaths: {{ totalDeaths$ | async }}</p>
-  <p>Total Deaths Today: {{ totalDeathsToday$ | async }}</p>
-  <p>Total Recovered: {{ totalRecovered$ | async }}</p>
+  <!-- <p>Total Deaths Today: {{ totalDeathsToday$ | async }}</p>
   <p *ngIf="countryWithHighestTotalDeaths$">Country with most total cases: {{ (countryWithHighestTotalDeaths$ | async).country }}</p>
   <p>Country with most cases today: </p>
   <p>Country with most deaths cases: </p>

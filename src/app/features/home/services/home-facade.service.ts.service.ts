@@ -19,8 +19,14 @@ export class HomeFacadeService {
     this.store.dispatch(action);
   }
 
-  getData(): Observable<CountryStat[]> {
-    return this.store.select(homeSelectors.selectHomeData());
+  getData(): Observable<any> {
+    return this.store.select(homeSelectors.selectHomeData()).pipe(
+      // map((stats: CountryStat[]) => {
+      //   return {
+      //       all: stats.find(stat => stat.country === 'All'),
+      //     };
+      // })
+    );
   }
 
   getDataForAllCountries(): Observable<CountryStat> {
