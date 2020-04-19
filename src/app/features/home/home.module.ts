@@ -5,6 +5,8 @@ import { AngularMaterialModule } from '../../angular-material-module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { DashboardModule } from '../dashboard/dashboard.module';
+import { NbCardModule } from '@nebular/theme';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { DashboardModule } from '../dashboard/dashboard.module';
     HttpClientModule,
     NgxEchartsModule,
     DashboardModule,
+    NbCardModule,
+    FlexLayoutModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

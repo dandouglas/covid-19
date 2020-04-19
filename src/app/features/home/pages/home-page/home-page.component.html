@@ -1,11 +1,26 @@
 <main>
-  <p>Total Cases: {{ totalCases$ | async }}</p>
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2rem">
+    <nb-card accent="danger">
+      <nb-card-header>Total Cases</nb-card-header>
+      <nb-card-body>{{ totalCases$ | async }}</nb-card-body>
+    </nb-card>
+    <nb-card accent="warning">
+      <nb-card-header>Active Cases</nb-card-header>
+      <nb-card-body>{{ totalDeaths$ | async }}</nb-card-body>
+    </nb-card>
+
+    <nb-card accent="primary">
+      <nb-card-header>Total Recovered</nb-card-header>
+      <nb-card-body>{{ totalRecovered$ | async }}</nb-card-body>
+    </nb-card>
+  </div>
+  <!-- <p>Total Cases: {{ totalCases$ | async }}</p>
   <p>Total Deaths: {{ totalDeaths$ | async }}</p>
   <p>Total Deaths Today: {{ totalDeathsToday$ | async }}</p>
   <p>Total Recovered: {{ totalRecovered$ | async }}</p>
-  <p>Country with most total cases: {{ (countryWithHighestTotalDeaths$ | async).country }}</p>
+  <p *ngIf="countryWithHighestTotalDeaths$">Country with most total cases: {{ (countryWithHighestTotalDeaths$ | async).country }}</p>
   <p>Country with most cases today: </p>
   <p>Country with most deaths cases: </p>
   <p>Country with most deaths today: </p>
-  <cv-country-stats [stats]="data$ | async"></cv-country-stats>
+  <cv-country-stats [stats]="data$ | async"></cv-country-stats> -->
 </main>
