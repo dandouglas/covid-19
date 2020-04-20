@@ -1,0 +1,40 @@
+<nb-card>
+  <nb-card-body>
+
+    <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" equalColumnsWidth>
+
+      <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+      <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+      <ng-container [nbTreeGridColumnDef]="customColumn">
+
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef nbSortHeader>
+          {{customColumn}}
+          <span *nbSortHeaderIcon="let asc = isAscending; let desc = isDescending">
+            <span *ngIf="asc" class="nb-chevron-down" aria-label="sorted ascending"></span>
+            <span *ngIf="desc" class="nb-chevron-up" aria-label="sorted descending"></span>
+          </span>
+        </th>
+
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">
+          <button nbTreeGridRowToggle
+                  *ngIf="row.hasChildren()"
+                  [attr.aria-label]="row.expanded ? 'collapse' : 'expand'">
+            <span [ngClass]="{'nb-chevron-down': row.expanded, 'nb-chevron-right': !row.expanded}"
+                  aria-hidden="true">
+            </span>
+          </button>
+          {{row.data.country}}
+        </td>
+
+      </ng-container>
+
+      <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{column}}</th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
+      </ng-container>
+
+    </table>
+
+  </nb-card-body>
+</nb-card>
