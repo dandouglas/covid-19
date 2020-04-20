@@ -18,7 +18,7 @@ export class StatDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.formattedVal = this.value.toLocaleString();
+    this.formattedVal = this.value ? this.value.toLocaleString() : '';
   }
 
 }

@@ -2,19 +2,19 @@
 
   <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2rem">
 
-    <ng-container *ngIf="(all$ | async) as all">
-      <nb-card accent="danger">
+    <ng-container *ngIf="(data$ | async) as data">
+      <nb-card accent="danger" *ngIf="data.total">
         <nb-card-header>
           <nb-icon icon="globe-outline"></nb-icon>Total Cases
         </nb-card-header>
         <nb-card-body>
           <nb-icon icon="globe-outline"></nb-icon>
           <div fxLayout="row" fxLayoutAlign="space-around center" class="all-cases">
-            <cv-stat-details [value]="all.cases.total" title="Total Cases"></cv-stat-details>
+            <cv-stat-details [value]="data.total.cases.total" title="Total Cases"></cv-stat-details>
           </div>
           <div fxLayout="row" fxLayoutAlign="space-around center">
-            <cv-stat-details [value]="all.deaths.total" title="Total Deaths"></cv-stat-details>
-            <cv-stat-details [value]="all.cases.recovered" title="Total Recovered"></cv-stat-details>
+            <cv-stat-details [value]="data.total.deaths.total" title="Total Deaths"></cv-stat-details>
+            <cv-stat-details [value]="data.total.cases.recovered" title="Total Recovered"></cv-stat-details>
           </div>
         </nb-card-body>
       </nb-card>
@@ -33,7 +33,7 @@
 
     <nb-card accent="primary">
       <nb-card-header>Total Recovered</nb-card-header>
-      <nb-card-body>{{ totalRecovered$ | async }}</nb-card-body>
+      <!-- <nb-card-body>{{ totalRecovered$ | async }}</nb-card-body> -->
     </nb-card>
   </div>
   <!-- <p>Total Deaths Today: {{ totalDeathsToday$ | async }}</p>

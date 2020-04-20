@@ -25,7 +25,11 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     this.homeFacadeService.dispatch(HomePageActions.enterPage());
-    this.data$ = this.homeFacadeService.getData();
+    this.data$ = this.homeFacadeService.getData().pipe(
+      map((stats: CountryStat[]) => ({
+        total: stats.find(stat => stat.country === 'All'),
+      }))
+    );
 
     this.all$ = this.homeFacadeService.getDataForAllCountries();
 
