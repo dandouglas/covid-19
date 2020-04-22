@@ -9,7 +9,7 @@
       <ng-container [nbTreeGridColumnDef]="customColumn">
 
         <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef nbSortHeader>
-          {{customColumn}}
+          {{customColumn | humanise}}
           <span *nbSortHeaderIcon="let asc = isAscending; let desc = isDescending">
             <span *ngIf="asc" class="nb-chevron-down" aria-label="sorted ascending"></span>
             <span *ngIf="desc" class="nb-chevron-up" aria-label="sorted descending"></span>
