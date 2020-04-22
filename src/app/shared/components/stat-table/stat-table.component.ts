@@ -9,7 +9,7 @@ import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/them
 export class StatTableComponent implements OnInit {
 
   customColumn = 'country';
-  defaultColumns = ['total cases', 'new cases', 'total deaths', 'new deaths', 'critical', 'recovered'];
+  defaultColumns = ['totalCases', 'newCases', 'totalDeaths', 'newDeaths', 'critical', 'recovered'];
   allColumns = [this.customColumn, ...this.defaultColumns];
 
   dataSource: NbTreeGridDataSource<FSEntry>;

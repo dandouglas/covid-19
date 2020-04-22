@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StatDetailsComponent } from './components/stat-details/stat-details.component';
 import { StatTableComponent } from './components/stat-table/stat-table.component';
 import { NbTreeGridModule, NbCardModule } from '@nebular/theme';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { NbTreeGridModule, NbCardModule } from '@nebular/theme';
     CommonModule,
     NbTreeGridModule,
     NbCardModule,
+    PipesModule,
   ],
   exports: [
     StatDetailsComponent,
