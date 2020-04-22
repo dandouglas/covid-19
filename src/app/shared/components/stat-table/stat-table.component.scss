@@ -9,12 +9,38 @@ button[nbTreeGridRowToggle] {
 .search-label {
   display: block;
 }
+
 .search-input {
   margin-bottom: 1rem;
   padding: .4rem;
   background-color: nb-theme(color-basic-900);
   border-color:  nb-theme(color-basic-1100);
   color: #ffffff;
+}
+
+
+td.nb-column-newCases {
+  color: nb-theme(color-primary-500);
+}
+
+td.nb-column-totalCases {
+  color: nb-theme(color-info-300);
+}
+
+td.nb-column-totalDeaths {
+  color: nb-theme(color-danger-500);
+}
+
+td.nb-column-newDeaths {
+  color: nb-theme(color-danger-600);
+}
+
+td.nb-column-critical {
+  color: nb-theme(color-danger-400);
+}
+
+td.nb-column-recovered {
+  color: nb-theme(color-success-500);
 }
 
 .nb-column-name {
