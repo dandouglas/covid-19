@@ -41,6 +41,7 @@ export class StatTableComponent implements OnInit {
   }
 
 }
+
 interface TreeNode<T> {
   data: T;
   children?: TreeNode<T>[];

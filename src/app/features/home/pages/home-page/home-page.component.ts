@@ -28,7 +28,9 @@ export class HomePageComponent implements OnInit {
     this.data$ = this.homeFacadeService.getData().pipe(
       map((stats: CountryStat[]) => ({
         total: stats.find(stat => stat.country === 'All'),
-        tableData: stats.map((stat: CountryStat) => {
+        tableData: stats
+        .filter((stat: CountryStat) => stat.country !== 'All' && stat.country !== 'Europe' && stat.country !== 'North-America')
+        .map((stat: CountryStat) => {
           return {
             data: {
             country: stat.country,
