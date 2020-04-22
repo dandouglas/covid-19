@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../../shared/shared.module';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HomeStoreModule } from './store/home-store.module';
+import { ComponentsModule } from '../../shared/components/components.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HomeStoreModule } from './store/home-store.module';
     SharedModule,
     NbEvaIconsModule,
     HomeStoreModule,
+    ComponentsModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
