@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
 
 @Component({
@@ -8,31 +8,20 @@ import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/them
 })
 export class StatTableComponent implements OnInit {
 
+  @Input() data: TreeNode<FSEntry>[];
+
   customColumn = 'country';
   defaultColumns = ['totalCases', 'newCases', 'totalDeaths', 'newDeaths', 'critical', 'recovered'];
   allColumns = [this.customColumn, ...this.defaultColumns];
 
   dataSource: NbTreeGridDataSource<FSEntry>;
 
-  constructor(dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
-    this.dataSource = dataSourceBuilder.create(this.data);
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
   }
 
-  private data: TreeNode<FSEntry>[] = [
-    {
-      data: {
-        country: 'China',
-        totalCases: '82719',
-        newCases: '4632',
-        totalDeaths: '4632',
-        newDeaths: '0',
-        critical: '85',
-        recovered: '77029'
-      },
-    },
-  ];
 
   ngOnInit() {
+    this.dataSource = this.dataSourceBuilder.create(this.data);
   }
 
 }

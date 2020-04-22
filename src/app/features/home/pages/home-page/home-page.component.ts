@@ -28,6 +28,18 @@ export class HomePageComponent implements OnInit {
     this.data$ = this.homeFacadeService.getData().pipe(
       map((stats: CountryStat[]) => ({
         total: stats.find(stat => stat.country === 'All'),
+        tableData: stats.map((stat: CountryStat) => {
+          return {
+            data: {
+            country: stat.country,
+            totalCases: stat.cases.total,
+            newCases: stat.cases.new,
+            totalDeaths: stat.deaths.total,
+            newDeaths: stat.deaths.new,
+            critical: stat.cases.critical,
+            recovered: stat.cases.active
+          }};
+        })
       }))
     );
 
