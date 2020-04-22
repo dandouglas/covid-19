@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { CountryStat } from '../../../dashboard/models/country-stat';
 import { HomeFacadeService } from '../../services/home-facade.service.ts.service';
 import { HomePageActions } from '../../store/actions/home-page.actions';
+import { HomeService } from '../../services/home.service';
 
 @Component({
   selector: 'cv-home-page',
@@ -21,27 +22,17 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private homeFacadeService: HomeFacadeService,
+    private homeService: HomeService,
   ) { }
 
   ngOnInit() {
     this.homeFacadeService.dispatch(HomePageActions.enterPage());
     this.data$ = this.homeFacadeService.getData().pipe(
       map((stats: CountryStat[]) => ({
-        total: stats.find(stat => stat.country === 'All'),
+        total: stats.find(this.homeService.findAll),
         tableData: stats
-        .filter((stat: CountryStat) => stat.country !== 'All' && stat.country !== 'Europe' && stat.country !== 'North-America')
-        .map((stat: CountryStat) => {
-          return {
-            data: {
-            country: stat.country,
-            totalCases: stat.cases.total,
-            newCases: stat.cases.new,
-            totalDeaths: stat.deaths.total,
-            newDeaths: stat.deaths.new,
-            critical: stat.cases.critical,
-            recovered: stat.cases.active
-          }};
-        })
+          .filter(this.homeService.nonCountryFilter)
+          .map(this.homeService.tableDataMap)
       }))
     );
 
