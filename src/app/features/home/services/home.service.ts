@@ -9,7 +9,8 @@ export class HomeService {
   constructor() { }
 
   nonCountryFilter(stat: CountryStat): boolean {
-    return stat.country !== 'All' && stat.country !== 'Europe' && stat.country !== 'North-America';
+    return stat.country !== 'All' && stat.country !== 'Europe' && stat.country !== 'North-America'
+    && stat.country !== 'Diamond-Princess-';
   }
 
   tableDataMap(stat: CountryStat): any {
