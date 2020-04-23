@@ -37,7 +37,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
           .map(this.homeService.tableDataMap)
       }))
     );
-    this.homeFacadeService.getHomePageState().subscribe(console.log);
+    this.homePageState$ = this.homeFacadeService.getHomePageState();
     this.all$ = this.homeFacadeService.getDataForAllCountries();
 
     // this.totalDeaths$ = this.data$.pipe(

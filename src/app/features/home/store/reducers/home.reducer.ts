@@ -24,7 +24,7 @@ const homeReducerFn = createReducer(
   on(HomeApiActions.getHomePageDataSuccess, (state, { stats }) => ({
     ...state,
     stats,
-    homeState: {
+    homePageState: {
       ...state.homePageState,
       initialising: false,
     }
