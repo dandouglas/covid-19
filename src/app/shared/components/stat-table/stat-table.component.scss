@@ -1,5 +1,11 @@
 @import '../../../../themes.scss';
 
+:host {
+  display: block;
+  max-height: 90vh;
+  overflow: auto;
+}
+
 button[nbTreeGridRowToggle] {
   background: transparent;
   border: none;
