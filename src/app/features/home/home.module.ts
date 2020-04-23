@@ -5,10 +5,12 @@ import { AngularMaterialModule } from '../../angular-material-module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { DashboardModule } from '../dashboard/dashboard.module';
-import { NbCardModule } from '@nebular/theme';
+import { NbCardModule, NbSpinnerModule } from '@nebular/theme';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../../shared/shared.module';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { HomeStoreModule } from './store/home-store.module';
+import { ComponentsModule } from '../../shared/components/components.module';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,12 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NgxEchartsModule,
     DashboardModule,
     NbCardModule,
+    NbSpinnerModule,
     FlexLayoutModule,
     SharedModule,
     NbEvaIconsModule,
+    HomeStoreModule,
+    ComponentsModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

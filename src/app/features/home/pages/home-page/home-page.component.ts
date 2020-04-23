@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { HomeApiService } from '../../services/home-api.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CountryStat } from '../../../dashboard/models/country-stat';
+import { HomeFacadeService } from '../../services/home-facade.service.ts.service';
+import { HomePageActions } from '../../store/actions/home-page.actions';
+import { HomeService } from '../../services/home.service';
+import { HomePageState } from '../../store/models/home-module-state.model';
 
 @Component({
   selector: 'cv-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
   data$: Observable<any>;
   totalDeaths$: Observable<string>;
   totalCases$: Observable<string>;
@@ -17,51 +20,62 @@ export class HomePageComponent implements OnInit {
   totalDeathsToday$: Observable<string>;
   countryWithHighestTotalDeaths$: Observable<CountryStat>;
   all$: Observable<CountryStat>;
+  homePageState$: Observable<HomePageState>;
 
   constructor(
-    private homeApiService: HomeApiService,
+    private homeFacadeService: HomeFacadeService,
+    private homeService: HomeService,
   ) { }
 
   ngOnInit() {
-    this.data$ = this.homeApiService.getWorldData();
-
-    this.all$ = this.data$.pipe(
-      map((data: CountryStat[]) => data
-        .find(stat => stat.country === 'All')
-        ));
-
-    this.totalDeaths$ = this.data$.pipe(
-      map((data: CountryStat[]) => data
-        .filter((stat) => stat.deaths.new !== null)
-        .filter((stat: CountryStat) => stat.country !== 'All')
-        .reduce((total, stat) => total + stat.deaths.total, 0).toLocaleString())
+    this.homeFacadeService.dispatch(HomePageActions.enterPage());
+    this.data$ = this.homeFacadeService.getData().pipe(
+      map((stats: CountryStat[]) => ({
+        total: stats.find(this.homeService.findAll),
+        tableData: stats
+          .filter(this.homeService.nonCountryFilter)
+          .map(this.homeService.tableDataMap)
+      }))
     );
+    this.homePageState$ = this.homeFacadeService.getHomePageState();
+    this.all$ = this.homeFacadeService.getDataForAllCountries();
 
-    this.totalDeathsToday$ = this.data$.pipe(
-      map((data: CountryStat[]) => data
-        .filter((stat) => stat.deaths.new !== null)
-        .filter((stat: CountryStat) => stat.country !== 'All')
-        .reduce((total, stat) => total + parseInt(stat.deaths.new.replace('+', ''), 10), 0).toLocaleString())
-    );
+    // this.totalDeaths$ = this.data$.pipe(
+    //   map((data: CountryStat[]) => data
+    //     .filter((stat) => stat.deaths.new !== null)
+    //     .filter((stat: CountryStat) => stat.country !== 'All')
+    //     .reduce((total, stat) => total + stat.deaths.total, 0).toLocaleString())
+    // );
 
-    this.totalCases$ = this.data$.pipe(
-      map((data: CountryStat[]) => data
-        .filter((stat: CountryStat) => stat.country !== 'All')
-        .reduce((total, stat) => total + stat.cases.total, 0).toLocaleString())
-    );
+    // this.totalDeathsToday$ = this.data$.pipe(
+    //   map((data: CountryStat[]) => data
+    //     .filter((stat) => stat.deaths.new !== null)
+    //     .filter((stat: CountryStat) => stat.country !== 'All')
+    //     .reduce((total, stat) => total + parseInt(stat.deaths.new.replace('+', ''), 10), 0).toLocaleString())
+    // );
 
-    this.totalRecovered$ = this.data$.pipe(
-      map((data: CountryStat[]) => data
-        .filter((stat: CountryStat) => stat.country !== 'All')
-        .reduce((total, stat) => total + stat.cases.recovered, 0).toLocaleString())
-    );
+    // this.totalCases$ = this.data$.pipe(
+    //   map((data: CountryStat[]) => data
+    //     .filter((stat: CountryStat) => stat.country !== 'All')
+    //     .reduce((total, stat) => total + stat.cases.total, 0).toLocaleString())
+    // );
 
-    this.countryWithHighestTotalDeaths$ = this.data$.pipe(
-      map((data: CountryStat[]) =>  data
-        .filter((stat: CountryStat) => stat.country !== 'All')
-        .reduce((prev, current) => (prev.deaths.total > current.deaths.total) ? prev : current))
-    );
+    // this.totalRecovered$ = this.data$.pipe(
+    //   map((data: CountryStat[]) => data
+    //     .filter((stat: CountryStat) => stat.country !== 'All')
+    //     .reduce((total, stat) => total + stat.cases.recovered, 0).toLocaleString())
+    // );
 
+    // this.countryWithHighestTotalDeaths$ = this.data$.pipe(
+    //   map((data: CountryStat[]) =>  data
+    //     .filter((stat: CountryStat) => stat.country !== 'All')
+    //     .reduce((prev, current) => (prev.deaths.total > current.deaths.total) ? prev : current))
+    // );
+
+  }
+
+  ngOnDestroy(): void {
+    this.homeFacadeService.dispatch(HomePageActions.leavePage());
   }
 
 }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
+import { CountryStat } from '../../dashboard/models/country-stat';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class HomeApiService {
     private httpClient: HttpClient
   ) { }
 
-  getWorldData(): Observable<any> {
+  getWorldData(): Observable<CountryStat[]> {
     const httpOptions = {
       headers: new HttpHeaders({
         'x-rapidapi-host':  'covid-193.p.rapidapi.com',

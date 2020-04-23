@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StatDetailsComponent } from './components/stat-details/stat-details.component';
+import { NbTreeGridModule, NbCardModule } from '@nebular/theme';
+import { PipesModule } from './pipes/pipes.module';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
-  declarations: [StatDetailsComponent],
-  imports: [
-    CommonModule
+  declarations: [
   ],
-  exports: [
-    StatDetailsComponent,
-  ]
+  imports: [
+    CommonModule,
+    NbTreeGridModule,
+    NbCardModule,
+    PipesModule,
+    ComponentsModule,
+  ],
 })
 export class SharedModule { }
