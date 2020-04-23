@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CountryStat } from '../../../dashboard/models/country-stat';
 import { HomeFacadeService } from '../../services/home-facade.service.ts.service';
 import { HomePageActions } from '../../store/actions/home-page.actions';
 import { HomeService } from '../../services/home.service';
+import { HomePageState } from '../../store/models/home-module-state.model';
 
 @Component({
   selector: 'cv-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
   data$: Observable<any>;
   totalDeaths$: Observable<string>;
   totalCases$: Observable<string>;
@@ -19,6 +20,7 @@ export class HomePageComponent implements OnInit {
   totalDeathsToday$: Observable<string>;
   countryWithHighestTotalDeaths$: Observable<CountryStat>;
   all$: Observable<CountryStat>;
+  homePageState$: Observable<HomePageState>;
 
   constructor(
     private homeFacadeService: HomeFacadeService,
@@ -35,7 +37,7 @@ export class HomePageComponent implements OnInit {
           .map(this.homeService.tableDataMap)
       }))
     );
-
+    this.homeFacadeService.getHomePageState().subscribe(console.log);
     this.all$ = this.homeFacadeService.getDataForAllCountries();
 
     // this.totalDeaths$ = this.data$.pipe(
@@ -70,6 +72,10 @@ export class HomePageComponent implements OnInit {
     //     .reduce((prev, current) => (prev.deaths.total > current.deaths.total) ? prev : current))
     // );
 
+  }
+
+  ngOnDestroy(): void {
+    this.homeFacadeService.dispatch(HomePageActions.leavePage());
   }
 
 }
