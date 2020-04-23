@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HomeState } from '../store/models/home-module-state.model';
+import { HomeState, HomePageState } from '../store/models/home-module-state.model';
 import { Store, Action } from '@ngrx/store';
 import { homeSelectors } from '../store/selectors/home-selectors';
 import { Observable } from 'rxjs';
@@ -20,13 +20,11 @@ export class HomeFacadeService {
   }
 
   getData(): Observable<any> {
-    return this.store.select(homeSelectors.selectHomeData()).pipe(
-      // map((stats: CountryStat[]) => {
-      //   return {
-      //       all: stats.find(stat => stat.country === 'All'),
-      //     };
-      // })
-    );
+    return this.store.select(homeSelectors.selectHomeData());
+  }
+
+  getHomePageState(): Observable<HomePageState> {
+    return this.store.select(homeSelectors.selectHomePageState());
   }
 
   getDataForAllCountries(): Observable<CountryStat> {
