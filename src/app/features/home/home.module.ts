@@ -5,7 +5,7 @@ import { AngularMaterialModule } from '../../angular-material-module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { DashboardModule } from '../dashboard/dashboard.module';
-import { NbCardModule } from '@nebular/theme';
+import { NbCardModule, NbSpinnerModule } from '@nebular/theme';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../../shared/shared.module';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
@@ -23,6 +23,7 @@ import { ComponentsModule } from '../../shared/components/components.module';
     NgxEchartsModule,
     DashboardModule,
     NbCardModule,
+    NbSpinnerModule,
     FlexLayoutModule,
     SharedModule,
     NbEvaIconsModule,

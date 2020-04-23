@@ -1,49 +1,47 @@
 <main>
-  <ng-container *ngIf="(data$ | async) as data">
+  <ng-container *ngIf="{
+    stats: data$ | async,
+    pageState: homePageState$ | async
+  } as pageData">
 
-    <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2rem">
+      <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2rem">
 
-      <nb-card accent="danger" *ngIf="data.total">
-        <nb-card-header>
-          <nb-icon icon="globe-outline"></nb-icon>Total Cases
-        </nb-card-header>
-        <nb-card-body>
-          <nb-icon icon="globe-outline"></nb-icon>
+        <nb-card accent="danger" [nbSpinner]="pageData.pageState.initialising" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+          <nb-card-header>
+            <nb-icon icon="globe-outline"></nb-icon>Total Cases
+          </nb-card-header>
+          <nb-card-body *ngIf="pageData.stats.total">
+            <nb-icon icon="globe-outline"></nb-icon>
+            <div fxLayout="row" fxLayoutAlign="space-around center" class="all-cases">
+              <cv-stat-details [value]="pageData.stats.total.cases.total" title="Total Cases"></cv-stat-details>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <cv-stat-details [value]="pageData.stats.total.deaths.total" title="Total Deaths"></cv-stat-details>
+              <cv-stat-details [value]="pageData.stats.total.cases.recovered" title="Total Recovered"></cv-stat-details>
+            </div>
+          </nb-card-body>
+        </nb-card>
+
+        <nb-card accent="warning" [nbSpinner]="pageData.pageState.initialising" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+          <nb-card-header>Today</nb-card-header>
           <div fxLayout="row" fxLayoutAlign="space-around center" class="all-cases">
-            <cv-stat-details [value]="data.total.cases.total" title="Total Cases"></cv-stat-details>
+            <!-- <cv-stat-details title="Country With The Most Cases"></cv-stat-details> -->
           </div>
           <div fxLayout="row" fxLayoutAlign="space-around center">
-            <cv-stat-details [value]="data.total.deaths.total" title="Total Deaths"></cv-stat-details>
-            <cv-stat-details [value]="data.total.cases.recovered" title="Total Recovered"></cv-stat-details>
+            <!-- <cv-stat-details title="Country With The Most Deaths"></cv-stat-details>
+            <cv-stat-details title="Total Recovered"></cv-stat-details> -->
           </div>
-        </nb-card-body>
-      </nb-card>
+        </nb-card>
 
-      <nb-card accent="warning">
-        <nb-card-header>Today</nb-card-header>
-        <div fxLayout="row" fxLayoutAlign="space-around center" class="all-cases">
-          <cv-stat-details title="Country With The Most Cases"></cv-stat-details>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-          <cv-stat-details title="Country With The Most Deaths"></cv-stat-details>
-          <cv-stat-details title="Total Recovered"></cv-stat-details>
-        </div>
-      </nb-card>
+        <nb-card accent="primary"[nbSpinner]="pageData.pageState.initialising" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+          <nb-card-header>Total Recovered</nb-card-header>
+          <!-- <nb-card-body>{{ totalRecovered$ | async }}</nb-card-body> -->
+        </nb-card>
 
-      <nb-card accent="primary">
-        <nb-card-header>Total Recovered</nb-card-header>
-        <!-- <nb-card-body>{{ totalRecovered$ | async }}</nb-card-body> -->
-      </nb-card>
-    </div>
-    <ng-container *ngIf="data.tableData.length">
-      <cv-stat-table [data]="data.tableData"></cv-stat-table>
+      </div>
+      <ng-container *ngIf="pageData.stats.tableData.length">
+        <cv-stat-table [data]="pageData.stats.tableData"></cv-stat-table>
+      </ng-container>
     </ng-container>
 
-    <!-- <p>Total Deaths Today: {{ totalDeathsToday$ | async }}</p>
-  <p *ngIf="countryWithHighestTotalDeaths$">Country with most total cases: {{ (countryWithHighestTotalDeaths$ | async).country }}</p>
-  <p>Country with most cases today: </p>
-  <p>Country with most deaths cases: </p>
-  <p>Country with most deaths today: </p>
-  <cv-country-stats [stats]="data$ | async"></cv-country-stats> -->
-  </ng-container>
 </main>
