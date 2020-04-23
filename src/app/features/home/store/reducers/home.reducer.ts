@@ -17,6 +17,10 @@ const homeReducerFn = createReducer(
       searchTerm: '',
     }
   })),
+  on(HomePageActions.leavePage, (state) => ({
+    ...state,
+    homePageState: undefined
+  })),
   on(HomeApiActions.getHomePageDataSuccess, (state, { stats }) => ({
     ...state,
     stats,

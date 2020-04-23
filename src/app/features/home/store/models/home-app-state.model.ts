@@ -3,6 +3,6 @@ import { AppState } from '../../../../core/root-store/app-state.model';
 
 export const homeStoreKey = 'home';
 
-export interface DocumentsAppState extends AppState {
+export interface HomeAppState extends AppState {
     [homeStoreKey]: HomeState;
 }

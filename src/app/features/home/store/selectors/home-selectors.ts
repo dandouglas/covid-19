@@ -5,13 +5,17 @@ import { homeStoreKey } from '../models/home-app-state.model';
 const selectHomeState = createFeatureSelector<HomeState>(homeStoreKey);
 
 const selectHomeData = () =>
-    createSelector(selectHomeState, (homeState) => {
+    createSelector(selectHomeState, (homeState: HomeState) => {
         if (!homeState || !homeState.stats) {
             return [];
         }
         return homeState.stats;
 });
 
+const selectHomePageState = () =>
+  createSelector(selectHomeState, (homeState: HomeState) => homeState.homePageState);
+
 export const homeSelectors = {
   selectHomeData,
+  selectHomePageState,
 };
