@@ -1,5 +1,5 @@
 interface CaseStats {
-  new: number;
+  new: string;
   active: number;
   critical: number;
   recovered: number;
