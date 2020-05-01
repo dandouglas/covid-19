@@ -18,9 +18,9 @@ export class HomeService {
       data: {
         country: stat.country,
         totalCases: stat.cases.total,
-        newCases: stat.cases.new,
+        newCases: stat.cases.new !== null ? parseInt(stat.cases.new.replace('+', ''), 10) : null,
         totalDeaths: stat.deaths.total,
-        newDeaths: stat.deaths.new,
+        newDeaths: stat.deaths.new !== null ? parseInt(stat.deaths.new.replace('+', ''), 10) : null,
         critical: stat.cases.critical,
         recovered: stat.cases.active,
       }

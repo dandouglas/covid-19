@@ -34,9 +34,15 @@ export class HomePageComponent implements OnInit, OnDestroy {
         total: stats.find(this.homeService.findAll),
         tableData: stats
           .filter(this.homeService.nonCountryFilter)
-          .map(this.homeService.tableDataMap)
-      }))
-    );
+          .map(this.homeService.tableDataMap),
+        highestDeaths: stats
+          .filter(this.homeService.nonCountryFilter)
+          .filter((x) => x.deaths.new !== null)
+          .sort((a, b) => {
+            return parseInt(b.deaths.new.replace('+', ''), 10) - parseInt(a.deaths.new.replace('+', ''), 10);
+          })[0]
+        })));
+
     this.homePageState$ = this.homeFacadeService.getHomePageState();
     this.all$ = this.homeFacadeService.getDataForAllCountries();
 
