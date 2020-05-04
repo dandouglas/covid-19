@@ -24,67 +24,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   constructor(
     private homeFacadeService: HomeFacadeService,
-    private homeService: HomeService,
   ) { }
 
   ngOnInit() {
     this.homeFacadeService.dispatch(HomePageActions.enterPage());
-    this.data$ = this.homeFacadeService.getData().pipe(
-      map((stats: CountryStat[]) => ({
-        total: stats.find(this.homeService.findAll),
-        tableData: stats
-          .filter(this.homeService.nonCountryFilter)
-          .map(this.homeService.tableDataMap),
-        highestDeaths: stats
-          .filter(this.homeService.nonCountryFilter)
-          .filter((x) => x.deaths.new !== null)
-          .sort((a, b) => {
-            return parseInt(b.deaths.new.replace('+', ''), 10) - parseInt(a.deaths.new.replace('+', ''), 10);
-          })[0],
-        highestCases: stats
-          .filter(this.homeService.nonCountryFilter)
-          .filter((x) => x.cases.new !== null)
-          .sort((a, b) => {
-            return parseInt(b.cases.new.replace('+', ''), 10) - parseInt(a.cases.new.replace('+', ''), 10);
-          })[0],
-        })));
-
-    // this.stats$ = this.homeService.getStats()
+    this.data$ = this.homeFacadeService.getData();
     this.homePageState$ = this.homeFacadeService.getHomePageState();
-    this.all$ = this.homeFacadeService.getDataForAllCountries();
-
-    // this.totalDeaths$ = this.data$.pipe(
-    //   map((data: CountryStat[]) => data
-    //     .filter((stat) => stat.deaths.new !== null)
-    //     .filter((stat: CountryStat) => stat.country !== 'All')
-    //     .reduce((total, stat) => total + stat.deaths.total, 0).toLocaleString())
-    // );
-
-    // this.totalDeathsToday$ = this.data$.pipe(
-    //   map((data: CountryStat[]) => data
-    //     .filter((stat) => stat.deaths.new !== null)
-    //     .filter((stat: CountryStat) => stat.country !== 'All')
-    //     .reduce((total, stat) => total + parseInt(stat.deaths.new.replace('+', ''), 10), 0).toLocaleString())
-    // );
-
-    // this.totalCases$ = this.data$.pipe(
-    //   map((data: CountryStat[]) => data
-    //     .filter((stat: CountryStat) => stat.country !== 'All')
-    //     .reduce((total, stat) => total + stat.cases.total, 0).toLocaleString())
-    // );
-
-    // this.totalRecovered$ = this.data$.pipe(
-    //   map((data: CountryStat[]) => data
-    //     .filter((stat: CountryStat) => stat.country !== 'All')
-    //     .reduce((total, stat) => total + stat.cases.recovered, 0).toLocaleString())
-    // );
-
-    // this.countryWithHighestTotalDeaths$ = this.data$.pipe(
-    //   map((data: CountryStat[]) =>  data
-    //     .filter((stat: CountryStat) => stat.country !== 'All')
-    //     .reduce((prev, current) => (prev.deaths.total > current.deaths.total) ? prev : current))
-    // );
-
   }
 
   ngOnDestroy(): void {
