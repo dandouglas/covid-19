@@ -40,7 +40,13 @@ export class HomePageComponent implements OnInit, OnDestroy {
           .filter((x) => x.deaths.new !== null)
           .sort((a, b) => {
             return parseInt(b.deaths.new.replace('+', ''), 10) - parseInt(a.deaths.new.replace('+', ''), 10);
-          })[0]
+          })[0],
+        highestCases: stats
+          .filter(this.homeService.nonCountryFilter)
+          .filter((x) => x.cases.new !== null)
+          .sort((a, b) => {
+            return parseInt(b.cases.new.replace('+', ''), 10) - parseInt(a.cases.new.replace('+', ''), 10);
+          })[0],
         })));
 
     this.homePageState$ = this.homeFacadeService.getHomePageState();

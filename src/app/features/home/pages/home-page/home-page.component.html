@@ -24,16 +24,12 @@
 
         <nb-card accent="warning" [nbSpinner]="pageData.pageState.initialising" nbSpinnerSize="giant" nbSpinnerStatus="primary">
           <nb-card-header>Today</nb-card-header>
-          <ng-container *ngIf="pageData.stats.highestDeaths">
-            <div fxLayout="row" fxLayoutAlign="space-around center" class="all-cases">
-              <cv-stat-details [value]="pageData.stats.highestDeaths.deaths.new" title="Country With The Highest Deaths" [country]="pageData.stats.highestDeaths.country"></cv-stat-details>
-            </div>
-            <!-- <div fxLayout="row" fxLayoutAlign="space-around center">
-              <cv-stat-details [value]="pageData.stats.highestDeaths.cases.new" title="Country With The Highest Cases" [country]="pageData.stats.highestDeaths.country"></cv-stat-details>
-              <cv-stat-details [value]="pageData.stats.highestDeaths.cases.recovered" title="Country With The Highest Recoveries" [country]="pageData.stats.highestDeaths.country"></cv-stat-details>
-            </div> -->
-          </ng-container>
-
+          <nb-card-body>
+              <div fxLayout="row" fxLayoutAlign="space-around center">
+                <cv-stat-details [value]="pageData.stats.highestCases.cases.new" title="Country With The Highest Cases" [country]="pageData.stats.highestCases.country"></cv-stat-details>
+                <cv-stat-details [value]="pageData.stats.highestDeaths.deaths.new" title="Country With The Highest Deaths" [country]="pageData.stats.highestDeaths.country"></cv-stat-details>
+              </div>
+          </nb-card-body>
         </nb-card>
 
         <nb-card accent="primary"[nbSpinner]="pageData.pageState.initialising" nbSpinnerSize="giant" nbSpinnerStatus="primary">
