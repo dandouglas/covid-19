@@ -26,8 +26,8 @@
           <nb-card-header>Latest Today</nb-card-header>
           <nb-card-body>
               <div fxLayout="row" fxLayoutAlign="space-around center">
-                <cv-stat-details [value]="pageData.stats.highestCases.cases.new" title="Country With The Highest Cases" [country]="pageData.stats.highestCases.country"></cv-stat-details>
-                <cv-stat-details [value]="pageData.stats.highestDeaths.deaths.new" title="Country With The Highest Deaths" [country]="pageData.stats.highestDeaths.country"></cv-stat-details>
+                <cv-stat-details *ngIf="pageData.stats.highestCases" [value]="pageData.stats.highestCases.cases.new" title="Country With The Highest Cases" [country]="pageData.stats.highestCases.country"></cv-stat-details>
+                <cv-stat-details *ngIf="pageData.stats.highestDeaths" [value]="pageData.stats.highestDeaths.deaths.new" title="Country With The Highest Deaths" [country]="pageData.stats.highestDeaths.country"></cv-stat-details>
               </div>
           </nb-card-body>
         </nb-card>
