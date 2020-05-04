@@ -12,12 +12,6 @@ import { HomeFacadeService } from '../../services/home-facade.service';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   data$: Observable<any>;
-  totalDeaths$: Observable<string>;
-  totalCases$: Observable<string>;
-  totalRecovered$: Observable<string>;
-  totalDeathsToday$: Observable<string>;
-  countryWithHighestTotalDeaths$: Observable<CountryStat>;
-  all$: Observable<CountryStat>;
   homePageState$: Observable<HomePageState>;
 
   constructor(
