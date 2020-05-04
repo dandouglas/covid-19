@@ -1,9 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { CountryStat } from '../../../dashboard/models/country-stat';
 import { HomePageActions } from '../../store/actions/home-page.actions';
-import { HomeService } from '../../services/home.service';
 import { HomePageState } from '../../store/models/home-module-state.model';
 import { HomeFacadeService } from '../../services/home-facade.service';
 
