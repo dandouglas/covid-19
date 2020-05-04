@@ -31,27 +31,16 @@ export class HomeFacadeService {
         highestDeaths: stats
           .filter(this.homeService.nonCountryFilter)
           .filter((x) => x.deaths.new !== null)
-          .sort((a, b) => {
-            return this.parseNewValues(b.deaths.new) - this.parseNewValues(a.deaths.new);
-          })[0],
+          .sort((a, b) => this.parseNewValues(b.deaths.new) - this.parseNewValues(a.deaths.new))[0],
         highestCases: stats
           .filter(this.homeService.nonCountryFilter)
           .filter((x) => x.cases.new !== null)
-          .sort((a, b) => {
-            return this.parseNewValues(b.cases.new) - this.parseNewValues(a.cases.new);
-          })[0],
+          .sort((a, b) => this.parseNewValues(b.cases.new) - this.parseNewValues(a.cases.new))[0],
       })));
   }
 
   getHomePageState(): Observable<HomePageState> {
     return this.store.select(homeSelectors.selectHomePageState());
-  }
-
-  getDataForAllCountries(): Observable<CountryStat> {
-    return this.getData().pipe(
-      map((data: CountryStat[]) => data
-        .find(stat => stat.country === 'All')
-      ));
   }
 
   /*
