@@ -23,7 +23,7 @@
         </nb-card>
 
         <nb-card accent="warning" [nbSpinner]="pageData.pageState.initialising" nbSpinnerSize="giant" nbSpinnerStatus="primary">
-          <nb-card-header>Today</nb-card-header>
+          <nb-card-header>Latest Today</nb-card-header>
           <nb-card-body>
               <div fxLayout="row" fxLayoutAlign="space-around center">
                 <cv-stat-details [value]="pageData.stats.highestCases.cases.new" title="Country With The Highest Cases" [country]="pageData.stats.highestCases.country"></cv-stat-details>
