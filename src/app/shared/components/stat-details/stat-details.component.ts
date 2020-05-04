@@ -12,13 +12,21 @@ export class StatDetailsComponent implements OnInit {
   title: string;
 
   @Input()
-  value: number;
-  formattedVal: string;
+  value: any;
+
+  @Input()
+  country?: string;
+
+  formattedVal: any;
 
   constructor() { }
 
   ngOnInit() {
-    this.formattedVal = this.value ? this.value.toLocaleString() : '';
+    if (typeof this.value === 'number') {
+      this.formattedVal = this.value ? this.value.toLocaleString() : '';
+    } else {
+      this.formattedVal = this.value;
+    }
   }
 
 }
