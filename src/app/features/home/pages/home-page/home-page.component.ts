@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HomePageActions } from '../../store/actions/home-page.actions';
 import { HomePageState } from '../../store/models/home-module-state.model';
 import { HomeFacadeService } from '../../services/home-facade.service';
+import { HomeService } from '../../services/home.service';
 
 @Component({
   selector: 'cv-home-page',
@@ -15,12 +16,14 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   constructor(
     private homeFacadeService: HomeFacadeService,
+    private homeService: HomeService,
   ) { }
 
   ngOnInit() {
     this.homeFacadeService.dispatch(HomePageActions.enterPage());
     this.data$ = this.homeFacadeService.getData();
     this.homePageState$ = this.homeFacadeService.getHomePageState();
+    this.homeService.getLocation();
   }
 
   ngOnDestroy(): void {

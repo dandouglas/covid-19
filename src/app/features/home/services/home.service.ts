@@ -1,12 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { CountryStat } from '../models/country-stat';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
 
-  constructor() { }
+  private window: Window = this.document.defaultView;
+
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+  ) { }
 
   nonCountryFilter(stat: CountryStat): boolean {
     return stat.country !== 'All' && stat.country !== 'Europe' && stat.country !== 'North-America'
@@ -29,5 +34,14 @@ export class HomeService {
 
   findAll(stat: CountryStat): boolean {
     return stat.country === 'All';
+  }
+
+  getLocation(): any {
+    if ('geolocation' in this.window.navigator) {
+      this.window.navigator.geolocation.getCurrentPosition((position: Position) => {
+        console.log(position);
+      });
+    }
+
   }
 }
