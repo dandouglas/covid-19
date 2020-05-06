@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CountryStat } from '../../../dashboard/models/country-stat';
 import { HomePageActions } from '../../store/actions/home-page.actions';
 import { HomePageState } from '../../store/models/home-module-state.model';
 import { HomeFacadeService } from '../../services/home-facade.service';

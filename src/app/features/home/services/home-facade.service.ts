@@ -3,9 +3,9 @@ import { HomeState, HomePageState } from '../store/models/home-module-state.mode
 import { Store, Action } from '@ngrx/store';
 import { homeSelectors } from '../store/selectors/home-selectors';
 import { Observable } from 'rxjs';
-import { CountryStat } from '../../dashboard/models/country-stat';
 import { map } from 'rxjs/operators';
 import { HomeService } from './home.service';
+import { CountryStat } from '../models/country-stat';
 
 @Injectable({
   providedIn: 'root'
