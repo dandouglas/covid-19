@@ -18,3 +18,8 @@ export interface CountryStat {
   day: string;
   time: string;
 }
+
+export interface UserLocation {
+  latitude: number;
+  longitude: number;
+}

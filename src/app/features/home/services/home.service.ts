@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
-import { CountryStat } from '../models/country-stat';
+import { CountryStat, UserLocation } from '../models/country-stat';
 import { DOCUMENT } from '@angular/common';
+import { Observable, Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -36,12 +37,24 @@ export class HomeService {
     return stat.country === 'All';
   }
 
-  getLocation(): any {
-    if ('geolocation' in this.window.navigator) {
-      this.window.navigator.geolocation.getCurrentPosition((position: Position) => {
-        console.log(position);
-      });
-    }
-
+  getLocation(): Observable<UserLocation> {
+    return new Observable((observer: Observer<UserLocation>) => {
+      if ('geolocation' in this.window.navigator) {
+        this.window.navigator.geolocation.getCurrentPosition((position: Position) => {
+          observer.next({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          });
+          observer.complete();
+        });
+      } else {
+        const defaultLocation: UserLocation = {
+          latitude: 51.5,
+          longitude: 0.12
+        };
+        observer.next(defaultLocation);
+        observer.complete();
+      }
+    });
   }
 }

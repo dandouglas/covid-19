@@ -4,9 +4,9 @@ import { HomePageActions } from '../actions/home-page.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { HomeApiService } from '../../services/home-api.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { of } from 'rxjs';
+import { of, forkJoin } from 'rxjs';
 import { HomeApiActions } from '../actions/home-api.actions';
-import { CountryStat } from '../../models/country-stat';
+import { HomeService } from '../../services/home.service';
 
 @Injectable()
 export class HomePageEffects {
@@ -14,16 +14,16 @@ export class HomePageEffects {
   constructor(
     private actions$: Actions,
     private homeApiService: HomeApiService,
+    private homeService: HomeService,
   ) { }
 
   homePageData$ = createEffect(() =>
     this.actions$.pipe(
       ofType(HomePageActions.enterPage),
-      switchMap(() => this.homeApiService.getWorldData()
+      switchMap(() => forkJoin([this.homeApiService.getWorldData(), this.homeService.getLocation()])
         .pipe(
-          map((stats: CountryStat[]) => HomeApiActions.getHomePageDataSuccess({ stats })),
+          map(([stats, userLocation]) => HomeApiActions.getHomePageDataSuccess({stats, userLocation})),
           catchError((err: HttpErrorResponse) => of(HomeApiActions.getHomePageDataFailure({ error: err.message })))
-        )))
+          )))
   );
-
 }
