@@ -22,8 +22,8 @@ export class HomePageEffects {
       ofType(HomePageActions.enterPage),
       switchMap(() => forkJoin([this.homeApiService.getWorldData(), this.homeService.getLocation()])
         .pipe(
-          map(([stats, userLocation]) => HomeApiActions.getHomePageDataSuccess({stats, userLocation})),
+          map(([stats, userLocation]) => HomeApiActions.getHomePageDataSuccess({ stats, userLocation })),
           catchError((err: HttpErrorResponse) => of(HomeApiActions.getHomePageDataFailure({ error: err.message })))
-          )))
+        )))
   );
 }

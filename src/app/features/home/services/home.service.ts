@@ -48,6 +48,7 @@ export class HomeService {
           observer.complete();
         });
       } else {
+        // If the location can't be fetched set lat lng to London coords
         const defaultLocation: UserLocation = {
           latitude: 51.5,
           longitude: 0.12

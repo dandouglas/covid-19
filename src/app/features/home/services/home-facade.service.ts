@@ -45,7 +45,7 @@ export class HomeFacadeService {
 
   /*
   * Takes a string with a + symbol at the beginning followed by a number (eg "+123")
-  * and return the number value
+  * and returns the number value
   */
   private parseNewValues(val: string): number {
     return parseInt(val.replace('+', ''), 10);
