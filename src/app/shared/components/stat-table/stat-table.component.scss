@@ -2,7 +2,7 @@
 
 :host {
   display: block;
-  max-height: 90vh;
+  // max-height: 90vh;
   overflow: auto;
 }
 :host ::ng-deep table tr:first-child th {
@@ -32,7 +32,7 @@ button[nbTreeGridRowToggle] {
 
 
 .table-wrapper {
-  height: 600px;
+  height: calc(100vh - 500px);
   overflow-y: auto;
 }
 
