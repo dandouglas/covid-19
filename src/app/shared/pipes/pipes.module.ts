@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HumanisePipe } from './humanise.pipe';
+import { LocaleStringPipe } from './locale-string.pipe';
 
 @NgModule({
   declarations: [
-    HumanisePipe
+    HumanisePipe,
+    LocaleStringPipe
   ],
   exports: [
-    HumanisePipe
+    HumanisePipe,
+    LocaleStringPipe,
   ],
   imports: [
     CommonModule
