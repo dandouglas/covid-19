@@ -16,7 +16,7 @@ export class HomeService {
 
   nonCountryFilter(stat: CountryStat): boolean {
     return stat.country !== 'All' && stat.country !== 'Europe' && stat.country !== 'North-America'
-    && stat.country !== 'Diamond-Princess-';
+      && stat.country !== 'Diamond-Princess-';
   }
 
   tableDataMap(stat: CountryStat): any {
@@ -58,4 +58,16 @@ export class HomeService {
       }
     });
   }
+
+  getCountry(results: google.maps.GeocoderResult[]): string {
+    let country: string;
+    results.forEach((res) => {
+      if (res.types[0] === 'country') {
+        country = res.address_components[0].short_name;
+      }
+    });
+
+    return country;
+  }
 }
+

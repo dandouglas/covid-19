@@ -22,7 +22,21 @@ export class HomePageEffects {
       ofType(HomePageActions.enterPage),
       switchMap(() => forkJoin([this.homeApiService.getWorldData(), this.homeService.getLocation()])
         .pipe(
-          map(([stats, userLocation]) => HomeApiActions.getHomePageDataSuccess({ stats, userLocation })),
+          map(([stats, userLocation]) => {
+            const geocoder = new google.maps.Geocoder();
+            const request: google.maps.GeocoderRequest = {
+              location: new google.maps.LatLng({lat: userLocation.latitude, lng: userLocation.longitude})
+            };
+            geocoder.geocode(request, (results, status) => {
+              if (status === google.maps.GeocoderStatus.OK) {
+                  if (results[0]) {
+                      const loc = this.homeService.getCountry(results);
+                      console.log(loc);
+                  }
+              }
+          });
+            return HomeApiActions.getHomePageDataSuccess({ stats, userLocation });
+          }),
           catchError((err: HttpErrorResponse) => of(HomeApiActions.getHomePageDataFailure({ error: err.message })))
         )))
   );
