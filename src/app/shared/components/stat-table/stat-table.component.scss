@@ -5,6 +5,12 @@
   max-height: 90vh;
   overflow: auto;
 }
+:host ::ng-deep table tr:first-child th {
+  position : sticky;
+  top: -1px;
+  z-index: 100;
+  background-color: nb-theme(color-basic-900);
+}
 
 button[nbTreeGridRowToggle] {
   background: transparent;
@@ -22,6 +28,12 @@ button[nbTreeGridRowToggle] {
   background-color: nb-theme(color-basic-900);
   border-color:  nb-theme(color-basic-1100);
   color: #ffffff;
+}
+
+
+.table-wrapper {
+  height: 600px;
+  overflow-y: auto;
 }
 
 
