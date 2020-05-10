@@ -12,6 +12,7 @@ export class HomeService {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
+    private homeService: HomeService,
   ) { }
 
   nonCountryFilter(stat: CountryStat): boolean {
@@ -64,10 +65,29 @@ export class HomeService {
     results.forEach((res) => {
       if (res.types[0] === 'country') {
         country = res.address_components[0].short_name;
+      } else if (res.types[0] === 'political') {
+        country = res.address_components[0].short_name;
+      } else {
+        country = 'UK';
       }
     });
 
     return country;
+  }
+
+  getUserLocation(request: google.maps.GeocoderRequest): Observable<string> {
+    return new Observable(observer => {
+      const geocoder = new google.maps.Geocoder();
+      return geocoder.geocode(request, (results, status) => {
+        if (status === google.maps.GeocoderStatus.OK) {
+          const userLocation = results[0] ? this.homeService.getCountry(results) : 'UK';
+          observer.next(userLocation);
+        } else {
+          observer.next('UK');
+        }
+        observer.complete();
+      });
+    });
   }
 }
 
