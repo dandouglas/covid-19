@@ -1,4 +1,6 @@
 <main>
+  <p>Stat</p>
+  <pre>{{ (localStats$  | async) | json }}</pre>
   <ng-container *ngIf="{
     stats: data$ | async,
     pageState: homePageState$ | async

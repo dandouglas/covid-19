@@ -5,7 +5,7 @@ import { homeSelectors } from '../store/selectors/home-selectors';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HomeService } from './home.service';
-import { CountryStat } from '../models/country-stat';
+import { CountryStat, HomeDataStats } from '../models/country-stat';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class HomeFacadeService {
     this.store.dispatch(action);
   }
 
-  getData(): Observable<any> {
+  getData(): Observable<HomeDataStats> {
     return this.store.select(homeSelectors.selectHomeData()).pipe(
       map((stats: CountryStat[]) => ({
         total: stats.find(this.homeService.findAll),
@@ -43,6 +43,10 @@ export class HomeFacadeService {
     return this.store.select(homeSelectors.selectHomePageState());
   }
 
+  getUserLocation(): Observable<string> {
+    return this.store.select(homeSelectors.selectUserLocation());
+  }
+
   /*
   * Takes a string with a + symbol at the beginning followed by a number (eg "+123")
   * and returns the number value
@@ -51,3 +55,4 @@ export class HomeFacadeService {
     return parseInt(val.replace('+', ''), 10);
   }
 }
+

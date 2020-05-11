@@ -15,7 +15,11 @@ const selectHomeData = () =>
 const selectHomePageState = () =>
   createSelector(selectHomeState, (homeState: HomeState) => homeState.homePageState);
 
+const selectUserLocation = () =>
+  createSelector(selectHomeState, (homeState: HomeState) => homeState.userLocation);
+
 export const homeSelectors = {
   selectHomeData,
   selectHomePageState,
+  selectUserLocation,
 };

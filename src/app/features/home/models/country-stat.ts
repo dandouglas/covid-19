@@ -23,3 +23,10 @@ export interface UserLocation {
   latitude: number;
   longitude: number;
 }
+
+export interface HomeDataStats {
+  total: CountryStat;
+  tableData: any[];
+  highestDeaths: CountryStat;
+  highestCases: CountryStat;
+}
