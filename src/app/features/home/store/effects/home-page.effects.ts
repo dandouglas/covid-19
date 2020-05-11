@@ -23,21 +23,22 @@ export class HomePageEffects {
       switchMap(() => forkJoin([this.homeApiService.getWorldData(), this.homeService.getLocation()])
         .pipe(
           map(([stats, userLocation]) => {
+            let loc = 'UK';
             const geocoder = new google.maps.Geocoder();
             const request: google.maps.GeocoderRequest = {
-              location: new google.maps.LatLng({lat: userLocation.latitude, lng: userLocation.longitude})
+              location: new google.maps.LatLng({ lat: userLocation.latitude, lng: userLocation.longitude })
             };
             geocoder.geocode(request, (results, status) => {
               if (status === google.maps.GeocoderStatus.OK) {
-                  if (results[0]) {
-                      const loc = this.homeService.getCountry(results);
-                      console.log(loc);
-                  }
+                if (results[0]) {
+                  loc = this.homeService.getCountry(results);
+                }
               }
-          });
-            return HomeApiActions.getHomePageDataSuccess({ stats, userLocation });
+            });
+            return HomeApiActions.getHomePageDataSuccess({ stats, userLocation: loc });
           }),
           catchError((err: HttpErrorResponse) => of(HomeApiActions.getHomePageDataFailure({ error: err.message })))
         )))
   );
+
 }
