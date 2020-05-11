@@ -12,7 +12,6 @@ export class HomeService {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private homeService: HomeService,
   ) { }
 
   nonCountryFilter(stat: CountryStat): boolean {
@@ -80,7 +79,7 @@ export class HomeService {
       const geocoder = new google.maps.Geocoder();
       return geocoder.geocode(request, (results, status) => {
         if (status === google.maps.GeocoderStatus.OK) {
-          const userLocation = results[0] ? this.homeService.getCountry(results) : 'UK';
+          const userLocation = results[0] ? this.getCountry(results) : 'UK';
           observer.next(userLocation);
         } else {
           observer.next('UK');
