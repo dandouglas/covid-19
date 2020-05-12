@@ -1,10 +1,11 @@
 <main>
-  <p>Stat</p>
-  <pre>{{ (localStats$  | async) | json }}</pre>
   <ng-container *ngIf="{
     stats: data$ | async,
-    pageState: homePageState$ | async
+    pageState: homePageState$ | async,
+    localStats : localStats$ | async
   } as pageData">
+
+  <pre>{{ pageData.localStats | json }}</pre>
 
       <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2rem">
 
@@ -25,7 +26,7 @@
         </nb-card>
 
         <nb-card accent="warning" [nbSpinner]="pageData.pageState.initialising" nbSpinnerSize="giant" nbSpinnerStatus="primary">
-          <nb-card-header>Latest Today</nb-card-header>
+          <nb-card-header>Latest Stats</nb-card-header>
           <nb-card-body>
               <div fxLayout="row" fxLayoutAlign="space-around center">
                 <cv-stat-details *ngIf="pageData.stats.highestCases" [value]="pageData.stats.highestCases.cases.new" title="Country With The Highest Cases" [country]="pageData.stats.highestCases.country"></cv-stat-details>
@@ -34,9 +35,18 @@
           </nb-card-body>
         </nb-card>
 
-        <nb-card accent="primary"[nbSpinner]="pageData.pageState.initialising" nbSpinnerSize="giant" nbSpinnerStatus="primary">
-          <nb-card-header>Total Recovered</nb-card-header>
-          <!-- <nb-card-body>{{ totalRecovered$ | async }}</nb-card-body> -->
+        <nb-card accent="primary" [nbSpinner]="pageData.pageState.initialising" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+          <nb-card-header>Local Stats <span *ngIf="pageData.localStats">({{ pageData.localStats.country }})</span></nb-card-header>
+          <nb-card-body *ngIf="pageData.localStats">
+            <nb-icon icon="globe-outline"></nb-icon>
+            <div fxLayout="row" fxLayoutAlign="space-around center" class="all-cases">
+              <cv-stat-details *ngIf="pageData.localStats" [value]="pageData.localStats.totalCases" title="Total Cases"></cv-stat-details>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <cv-stat-details *ngIf="pageData.localStats" [value]="pageData.localStats.totalDeaths" title="Total Deaths"></cv-stat-details>
+              <cv-stat-details *ngIf="pageData.localStats" [value]="pageData.localStats.recovered" title="Total Recovered"></cv-stat-details>
+            </div>
+          </nb-card-body>
         </nb-card>
 
       </div>
