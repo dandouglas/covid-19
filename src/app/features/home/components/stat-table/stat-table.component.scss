@@ -64,3 +64,18 @@ td.nb-column-recovered {
 .nb-column-name {
   width: 100%;
 }
+
+@mixin hide-columns($column) {
+  th:nth-child(#{$column}), td:nth-child(#{$column}) {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 818px) {
+  @include hide-columns(7)
+}
+
+@media only screen and (max-width: 555px) {
+  @include hide-columns(6);
+}
+

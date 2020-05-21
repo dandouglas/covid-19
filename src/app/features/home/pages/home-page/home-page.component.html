@@ -5,9 +5,7 @@
     localStats : localStats$ | async
   } as pageData">
 
-  <pre>{{ pageData.localStats | json }}</pre>
-
-      <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="2rem">
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="2rem">
 
         <nb-card accent="danger" [nbSpinner]="pageData.pageState.initialising" nbSpinnerSize="giant" nbSpinnerStatus="primary">
           <nb-card-header>
@@ -44,7 +42,7 @@
             </div>
             <div fxLayout="row" fxLayoutAlign="space-around center">
               <cv-stat-details *ngIf="pageData.localStats" [value]="pageData.localStats.totalDeaths" title="Total Deaths"></cv-stat-details>
-              <cv-stat-details *ngIf="pageData.localStats" [value]="pageData.localStats.recovered" title="Total Recovered"></cv-stat-details>
+              <cv-stat-details *ngIf="pageData.localStats" [value]="pageData.localStats.newCases" title="New Cases"></cv-stat-details>
             </div>
           </nb-card-body>
         </nb-card>
