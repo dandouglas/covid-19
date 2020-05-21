@@ -72,14 +72,14 @@ td.nb-column-recovered {
 
 @media only screen and (max-width: 818px) {
   @include hide-columns(7);
-  th, td {
+  th, td, nb-card  {
     font-size: .8rem;
   }
 }
 
 @media only screen and (max-width: 555px) {
   @include hide-columns(6);
-  th, td {
+  th, td, nb-card  {
     font-size: .7.5rem;
   }
 }

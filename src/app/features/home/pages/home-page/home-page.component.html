@@ -5,7 +5,7 @@
     localStats : localStats$ | async
   } as pageData">
 
-      <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="2rem">
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column" fxLayoutAlign="space-around center" fxLayoutGap="2rem">
 
         <nb-card accent="danger" [nbSpinner]="pageData.pageState.initialising" nbSpinnerSize="giant" nbSpinnerStatus="primary">
           <nb-card-header>
