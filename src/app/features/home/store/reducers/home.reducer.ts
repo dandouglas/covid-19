@@ -6,6 +6,7 @@ import { HomeApiActions } from '../actions/home-api.actions';
 export const initialState: HomeState = {
   stats: undefined,
   homePageState: undefined,
+  userLocation: undefined,
 };
 
 const homeReducerFn = createReducer(
@@ -21,9 +22,10 @@ const homeReducerFn = createReducer(
     ...state,
     homePageState: undefined
   })),
-  on(HomeApiActions.getHomePageDataSuccess, (state, { stats }) => ({
+  on(HomeApiActions.getHomePageDataSuccess, (state, { stats, userLocation }) => ({
     ...state,
     stats,
+    userLocation,
     homePageState: {
       ...state.homePageState,
       initialising: false,

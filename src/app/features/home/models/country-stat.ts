@@ -1,5 +1,5 @@
 interface CaseStats {
-  new: number;
+  new: string;
   active: number;
   critical: number;
   recovered: number;
@@ -17,4 +17,16 @@ export interface CountryStat {
   deaths: DeathStats;
   day: string;
   time: string;
+}
+
+export interface UserLocation {
+  latitude: number;
+  longitude: number;
+}
+
+export interface HomeDataStats {
+  total: CountryStat;
+  tableData: any[];
+  highestDeaths: CountryStat;
+  highestCases: CountryStat;
 }

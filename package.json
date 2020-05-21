@@ -27,6 +27,7 @@
     "@ngrx/effects": "^9.0.0",
     "@ngrx/store": "^8.6.0",
     "@ngrx/store-devtools": "^8.6.0",
+    "@types/googlemaps": "^3.39.4",
     "echarts": "^4.7.0",
     "echarts-gl": "^1.1.1",
     "eva-icons": "^1.1.3",

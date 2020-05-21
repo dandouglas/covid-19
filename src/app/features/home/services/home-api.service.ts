@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
-import { CountryStat } from '../../dashboard/models/country-stat';
+import { CountryStat } from '../models/country-stat';
 
 @Injectable({
   providedIn: 'root'
