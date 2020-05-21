@@ -4,16 +4,22 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AngularMaterialModule } from '../../angular-material-module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { NbCardModule, NbSpinnerModule } from '@nebular/theme';
+import { NbCardModule, NbSpinnerModule, NbTreeGridModule } from '@nebular/theme';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../../shared/shared.module';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HomeStoreModule } from './store/home-store.module';
-import { ComponentsModule } from '../../shared/components/components.module';
+import { StatDetailsComponent } from './components/stat-details/stat-details.component';
+import { StatTableComponent } from './components/stat-table/stat-table.component';
+import { StatTodayComponent } from './components/stat-today/stat-today.component';
+import { PipesModule } from '../../shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [
-    HomePageComponent
+    HomePageComponent,
+    StatDetailsComponent,
+    StatTableComponent,
+    StatTodayComponent,
   ],
   imports: [
     AngularMaterialModule,
@@ -26,7 +32,8 @@ import { ComponentsModule } from '../../shared/components/components.module';
     SharedModule,
     NbEvaIconsModule,
     HomeStoreModule,
-    ComponentsModule,
+    NbTreeGridModule,
+    PipesModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
