@@ -9,6 +9,7 @@ import { FeaturesModule } from './features/features.module';
 import { AngularMaterialModule } from './angular-material-module';
 import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbThemeModule.forRoot({ name: 'dark' }),
     NbLayoutModule,
     NbEvaIconsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
