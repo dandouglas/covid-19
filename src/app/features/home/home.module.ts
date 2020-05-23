@@ -13,6 +13,7 @@ import { StatDetailsComponent } from './components/stat-details/stat-details.com
 import { StatTableComponent } from './components/stat-table/stat-table.component';
 import { StatTodayComponent } from './components/stat-today/stat-today.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { PipesModule } from '../../shared/pipes/pipes.module';
     HomeStoreModule,
     NbTreeGridModule,
     PipesModule,
+    FontAwesomeModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
