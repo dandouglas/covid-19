@@ -3,6 +3,17 @@ nb-card {
   height: 216px;
 }
 
+nb-card-header {
+  position: relative;
+
+  & fa-icon {
+    position: absolute;
+    right: 1rem;
+  }
+}
+
+
+
 .all-cases {
   margin-bottom: 2rem;
 }

@@ -5,6 +5,7 @@ import { HomePageState } from '../../store/models/home-module-state.model';
 import { HomeFacadeService } from '../../services/home-facade.service';
 import { HomeService } from '../../services/home.service';
 import { map, skip } from 'rxjs/operators';
+import { faGlobe, faClock, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'cv-home-page',
@@ -16,6 +17,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
   homePageState$: Observable<HomePageState>;
   userLocation$: Observable<string>;
   localStats$: Observable<any>;
+  faGlobe = faGlobe;
+  faClock = faClock;
+  faMapMarkerAlt = faMapMarkerAlt;
 
   constructor(
     private homeFacadeService: HomeFacadeService,
