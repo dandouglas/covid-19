@@ -30,3 +30,19 @@ export interface HomeDataStats {
   highestDeaths: CountryStat;
   highestCases: CountryStat;
 }
+
+export interface TreeNode<T> {
+  data: T;
+  children?: TreeNode<T>[];
+  expanded?: boolean;
+}
+
+export interface FSEntry {
+  country: string;
+  totalCases: string;
+  newCases: string;
+  totalDeaths: string;
+  newDeaths: string;
+  critical: string;
+  recovered: string;
+}
