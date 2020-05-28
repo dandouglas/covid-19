@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
-import { HomeFacadeService } from './home-facade.service.ts.service';
+import { HomeFacadeService } from './home-facade.service';
 
 describe('HomeFacade.Service.TsService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
