@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatDetailsComponent } from './stat-details.component';
+import { mockPipe } from '../../../../../testing/mock-pipe';
 
 describe('StatDetailsComponent', () => {
   let component: StatDetailsComponent;
@@ -8,9 +9,12 @@ describe('StatDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatDetailsComponent ]
+      declarations: [
+        StatDetailsComponent,
+        mockPipe({ name: 'localeString' }),
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,4 +26,5 @@ describe('StatDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
