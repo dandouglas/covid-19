@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'cv-stat-details',
@@ -6,7 +6,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
   styleUrls: ['./stat-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StatDetailsComponent implements OnInit {
+export class StatDetailsComponent {
 
   @Input()
   title: string;
@@ -16,17 +16,5 @@ export class StatDetailsComponent implements OnInit {
 
   @Input()
   country?: string;
-
-  formattedVal: any;
-
-  constructor() { }
-
-  ngOnInit() {
-    if (typeof this.value === 'number') {
-      this.formattedVal = this.value ? this.value.toLocaleString() : '';
-    } else {
-      this.formattedVal = this.value;
-    }
-  }
 
 }

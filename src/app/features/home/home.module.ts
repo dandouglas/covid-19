@@ -11,7 +11,6 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HomeStoreModule } from './store/home-store.module';
 import { StatDetailsComponent } from './components/stat-details/stat-details.component';
 import { StatTableComponent } from './components/stat-table/stat-table.component';
-import { StatTodayComponent } from './components/stat-today/stat-today.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -20,7 +19,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HomePageComponent,
     StatDetailsComponent,
     StatTableComponent,
-    StatTodayComponent,
   ],
   imports: [
     AngularMaterialModule,
