@@ -3,7 +3,6 @@ import { Observable, combineLatest } from 'rxjs';
 import { HomePageActions } from '../../store/actions/home-page.actions';
 import { HomePageState } from '../../store/models/home-module-state.model';
 import { HomeFacadeService } from '../../services/home-facade.service';
-import { HomeService } from '../../services/home.service';
 import { map, skip } from 'rxjs/operators';
 import { faGlobe, faClock, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -23,7 +22,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   constructor(
     private homeFacadeService: HomeFacadeService,
-    private homeService: HomeService,
   ) { }
 
   ngOnInit() {
