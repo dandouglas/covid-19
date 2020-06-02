@@ -31,14 +31,13 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.data$ = this.homeFacadeService.getData();
     this.homePageState$ = this.homeFacadeService.getHomePageState();
     this.userLocation$ = this.homeFacadeService.getUserLocation();
-    this.localStats$ = combineLatest([this.homeFacadeService.getData(), this.userLocation$]).pipe(
+    this.localStats$ = combineLatest([this.data$, this.userLocation$]).pipe(
       skip(1),
       map(([stats, location]) => {
         const res = stats.tableData.find((stat) => stat.data.country === location) ||
           stats.tableData.find((stat) => stat.data.country === 'UK');
         return res.data;
       }));
-    this.homeService.getLocation();
   }
 
   ngOnDestroy(): void {
