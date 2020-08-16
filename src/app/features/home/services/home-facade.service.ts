@@ -5,7 +5,7 @@ import { homeSelectors } from '../store/selectors/home-selectors';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HomeService } from './home.service';
-import { CountryStat, HomeDataStats } from '../models/country-stat';
+import { CountryStat, HomeDataStats } from '../models/stat.models';
 
 @Injectable({
   providedIn: 'root'

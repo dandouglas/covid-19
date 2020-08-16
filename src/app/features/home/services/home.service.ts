@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { CountryStat, UserLocation } from '../models/country-stat';
+import { CountryStat, UserLocation } from '../models/stat.models';
 import { DOCUMENT } from '@angular/common';
 import { Observable, Observer } from 'rxjs';
 

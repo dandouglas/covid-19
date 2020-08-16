@@ -1,4 +1,4 @@
-import { CountryStat, CaseStats, DeathStats } from '../app/features/home/models/country-stat';
+import { CountryStat, CaseStats, DeathStats } from '../app/features/home/models/stat.models';
 import * as faker from 'faker';
 
 

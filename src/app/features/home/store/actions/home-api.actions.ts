@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { CountryStat } from '../../models/country-stat';
+import { CountryStat } from '../../models/stat.models';
 
 const getHomePageDataSuccess = createAction(
   '[Home API] Get Home Page Data Success',

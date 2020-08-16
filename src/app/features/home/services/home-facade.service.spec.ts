@@ -2,9 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { HomeFacadeService } from './home-facade.service';
 import { Store, Action } from '@ngrx/store';
 import { HomeService } from './home.service';
-import { HomeDataStats } from '../models/country-stat';
+import { HomeDataStats } from '../models/stat.models';
 
-fdescribe('HomeFacadeService', () => {
+describe('HomeFacadeService', () => {
 
   let mockStore;
   let mockHomeService;

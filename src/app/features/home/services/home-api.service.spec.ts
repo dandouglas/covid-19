@@ -2,7 +2,7 @@ import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HomeApiService } from './home-api.service';
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { CountryStat } from '../models/country-stat';
+import { CountryStat } from '../models/stat.models';
 import { countryStatGenerator } from '../../../../testing/country-stat-generator';
 
 describe('HomeApiService', () => {
