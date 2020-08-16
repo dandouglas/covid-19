@@ -23,6 +23,6 @@ export class HomeApiService {
     };
 
     const url = 'https://covid-193.p.rapidapi.com/statistics';
-    return this.httpClient.get<any>(url, httpOptions).pipe(map((data) => data.response));
+    return this.httpClient.get<{ response: CountryStat[]}>(url, httpOptions).pipe(map((data) => data.response));
   }
 }
