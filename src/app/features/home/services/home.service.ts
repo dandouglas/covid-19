@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { CountryStat, UserLocation } from '../models/country-stat';
+import { CountryStat, UserLocation } from '../models/stat.models';
 import { DOCUMENT } from '@angular/common';
 import { Observable, Observer } from 'rxjs';
 
@@ -16,7 +16,7 @@ export class HomeService {
 
   nonCountryFilter(stat: CountryStat): boolean {
     return stat.country !== 'All' && stat.country !== 'Europe' && stat.country !== 'North-America'
-      && stat.country !== 'Diamond-Princess-';
+    && stat.country !== 'Asia' && stat.country !== 'Diamond-Princess-';
   }
 
   tableDataMap(stat: CountryStat): any {

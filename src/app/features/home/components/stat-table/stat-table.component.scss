@@ -31,7 +31,10 @@ button[nbTreeGridRowToggle] {
 
 
 .table-wrapper {
-  height: calc(100vh - 500px);
+  height: 100vh;
+  @media (min-width: 1281px) {
+    height: calc(100vh - 500px);
+  }
   overflow-y: auto;
 }
 

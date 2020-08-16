@@ -3,7 +3,7 @@ import { HomePageComponent } from './home-page.component';
 import { of } from 'rxjs';
 import { HomeFacadeService } from '../../services/home-facade.service';
 import { HomePageState } from '../../store/models/home-module-state.model';
-import { HomeDataStats } from '../../models/country-stat';
+import { HomeDataStats } from '../../models/stat.models';
 import { HomePageActions } from '../../store/actions/home-page.actions';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 

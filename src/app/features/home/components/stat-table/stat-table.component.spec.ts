@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatTableComponent } from './stat-table.component';
 import { NbTreeGridDataSourceBuilder, NbSortDirection } from '@nebular/theme';
-import { FSEntry, TreeNode } from '../../models/country-stat';
+import { FSEntry, TreeNode } from '../../models/stat.models';
 import { MockTableData } from '../../../../../testing/mock-table-data';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 

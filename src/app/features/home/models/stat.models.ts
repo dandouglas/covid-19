@@ -1,4 +1,4 @@
-interface CaseStats {
+export interface CaseStats {
   new: string;
   active: number;
   critical: number;
@@ -6,7 +6,7 @@ interface CaseStats {
   total: number;
 }
 
-interface DeathStats {
+export interface DeathStats {
   new: string;
   total: number;
 }
