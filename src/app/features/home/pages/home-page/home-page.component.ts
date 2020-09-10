@@ -26,7 +26,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.homeFacadeService.dispatch(HomePageActions.enterPage());
-    this.data$ = this.homeFacadeService.getData();
+    this.data$ = this.homeFacadeService.getTableData();
     this.homePageState$ = this.homeFacadeService.getHomePageState();
     this.userLocation$ = this.homeFacadeService.getUserLocation();
     this.localStats$ = combineLatest([this.data$, this.userLocation$]).pipe(

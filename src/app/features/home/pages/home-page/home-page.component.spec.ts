@@ -29,7 +29,7 @@ describe('HomePageComponent', () => {
   beforeEach(async(() => {
     mockHomeFacadeService = jasmine.createSpyObj('mockHomeFacadeService', {
       dispatch: () => {},
-      getData: of(mockData),
+      getTableData: of(mockData),
       getHomePageState: of(mockHomePageState),
       getUserLocation: of(mockLocation)
     });
@@ -62,7 +62,7 @@ describe('HomePageComponent', () => {
     });
 
     it('should get the data', () => {
-      expect(mockHomeFacadeService.getData).toHaveBeenCalled();
+      expect(mockHomeFacadeService.getTableData).toHaveBeenCalled();
     });
 
     it('should define the data correctly', async () => {

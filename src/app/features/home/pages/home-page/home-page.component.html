@@ -65,7 +65,7 @@
       </nb-card>
 
     </div>
-    <ng-container *ngIf="pageData.stats.tableData.length">
+    <ng-container *ngIf="pageData?.stats?.tableData?.length">
       <cv-stat-table [data]="pageData.stats.tableData"></cv-stat-table>
     </ng-container>
   </ng-container>
