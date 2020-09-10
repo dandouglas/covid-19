@@ -47,6 +47,8 @@ export const homeSelectors = {
   selectTableData,
 };
 
+// TODO: Move helper methods to another file
+
 function findAll(stat: CountryStat): boolean {
   return stat.country === 'All';
 }
