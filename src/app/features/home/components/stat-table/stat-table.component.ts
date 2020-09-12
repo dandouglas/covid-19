@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbSortDirection, NbSortRequest } from '@nebular/theme';
+import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { NbTreeGridDataSource, NbSortDirection, NbSortRequest } from '@nebular/theme';
+import { FSEntry } from '../../models/stat.models';
 
 @Component({
   selector: 'cv-stat-table',
@@ -7,51 +8,24 @@ import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbSortDirection, NbS
   styleUrls: ['./stat-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StatTableComponent implements OnInit {
+export class StatTableComponent {
 
-  @Input() data: TreeNode<FSEntry>[];
-  @Input() dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>;
+  @Input() dataSource: NbTreeGridDataSource<FSEntry>;
+  @Input() allColumns: string[];
+  @Input() customColumn: string;
+  @Input() defaultColumns: string;
+  @Input() sortColumn: string;
+  @Input() sortDirection: NbSortDirection;
 
-  customColumn = 'country';
-  defaultColumns = ['totalCases', 'newCases', 'totalDeaths', 'newDeaths', 'critical', 'recovered'];
-  allColumns = [this.customColumn, ...this.defaultColumns];
+  @Output() changeSort = new EventEmitter<NbSortRequest>();
+  @Output() getDirection = new EventEmitter<string>();
 
-  dataSource: NbTreeGridDataSource<FSEntry>;
-
-  sortColumn = '';
-  sortDirection: NbSortDirection = NbSortDirection.NONE;
-
-  ngOnInit() {
-    this.dataSource = this.dataSourceBuilder.create(this.data);
+  onChangeSort(sortRequest: NbSortRequest): void {
+    this.changeSort.emit(sortRequest);
   }
 
-  changeSort(sortRequest: NbSortRequest): void {
-    this.dataSource.sort(sortRequest);
-    this.sortColumn = sortRequest.column;
-    this.sortDirection = sortRequest.direction;
+  onGetDirection(column: string): void {
+    this.getDirection.emit(column);
   }
 
-  getDirection(column: string): NbSortDirection {
-    if (column === this.sortColumn) {
-      return this.sortDirection;
-    }
-    return NbSortDirection.NONE;
-  }
-
-}
-
-interface TreeNode<T> {
-  data: T;
-  children?: TreeNode<T>[];
-  expanded?: boolean;
-}
-
-interface FSEntry {
-  country: string;
-  totalCases: string;
-  newCases: string;
-  totalDeaths: string;
-  newDeaths: string;
-  critical: string;
-  recovered: string;
 }

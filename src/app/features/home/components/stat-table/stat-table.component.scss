@@ -1,5 +1,5 @@
 @import '../../../../../themes.scss';
-
+@import '../../../../../scss/core/variables';
 :host {
   display: block;
   overflow: auto;
@@ -16,28 +16,6 @@ button[nbTreeGridRowToggle] {
   border: none;
   padding: 0;
 }
-
-.search-label {
-  display: block;
-}
-
-.search-input {
-  margin-bottom: 1rem;
-  padding: .4rem;
-  background-color: nb-theme(color-basic-900);
-  border-color:  nb-theme(color-basic-1100);
-  color: #ffffff;
-}
-
-
-.table-wrapper {
-  height: 100vh;
-  @media (min-width: 1281px) {
-    height: calc(100vh - 500px);
-  }
-  overflow-y: auto;
-}
-
 
 td.nb-column-newCases {
   color: nb-theme(color-primary-500);
@@ -87,19 +65,10 @@ td.nb-column-recovered {
   }
 }
 
-$stacked-column-width: 600px;
 @media only screen and (max-width: #{$stacked-column-width}) {
-  nb-card-body {
-    padding: .25rem .5rem;
-  }
-
-  .search-input {
-    margin-bottom: .5rem;
-  }
 
   td, th {
     padding: 0.4rem .75rem !important;
   }
 
 }
-

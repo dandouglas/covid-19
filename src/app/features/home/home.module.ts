@@ -13,12 +13,14 @@ import { StatDetailsComponent } from './components/stat-details/stat-details.com
 import { StatTableComponent } from './components/stat-table/stat-table.component';
 import { PipesModule } from '../../shared/pipes/pipes.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StatTableContainerComponent } from './containers/stat-table-container/stat-table-container.component';
 
 @NgModule({
   declarations: [
     HomePageComponent,
     StatDetailsComponent,
     StatTableComponent,
+    StatTableContainerComponent,
   ],
   imports: [
     AngularMaterialModule,

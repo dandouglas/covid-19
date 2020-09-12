@@ -1,41 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatTableComponent } from './stat-table.component';
-import { NbTreeGridDataSourceBuilder, NbSortDirection } from '@nebular/theme';
-import { FSEntry, TreeNode } from '../../models/stat.models';
-import { MockTableData } from '../../../../../testing/mock-table-data';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import * as faker from 'faker';
+import { NbSortDirection } from '@nebular/theme';
 
 describe('StatTableComponent', () => {
   let component: StatTableComponent;
   let fixture: ComponentFixture<StatTableComponent>;
 
-  let mockDataSourceBuilder;
-
-  const mockTableData = MockTableData as unknown as TreeNode<FSEntry>[];
-
-  const mockColumn = 'testColumn';
-  const mockDirection = NbSortDirection.ASCENDING;
-
-  const mockNbSortRequest = {
-    column: 'testColumn',
-    direction: mockDirection
-  };
 
   beforeEach(async(() => {
-
-    mockDataSourceBuilder = jasmine.createSpyObj('mockDataSourceBuilder', {
-      create: {
-        sort: jasmine.createSpy('sort')
-      }
-    });
-
     TestBed.configureTestingModule({
       declarations: [StatTableComponent],
-      providers: [
-        { provide: NbTreeGridDataSourceBuilder, useValue: mockDataSourceBuilder }
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   }));
@@ -44,53 +22,31 @@ describe('StatTableComponent', () => {
     fixture = TestBed.createComponent(StatTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    component.data = mockTableData;
-    component.ngOnInit();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('ngOnInit', () => {
-    it('should initialise the data source', () => {
-      expect(mockDataSourceBuilder.create).toHaveBeenCalledWith(mockTableData);
+  describe('onChangeSort', () => {
+    it('should emit the sort request', () => {
+      const mockNbSortRequest = {
+        column: faker.random.word(),
+        direction: NbSortDirection.ASCENDING
+      };
+      component.changeSort = jasmine.createSpyObj('changeSort', ['emit']);
+      component.onChangeSort(mockNbSortRequest);
+      expect(component.changeSort.emit).toHaveBeenCalledWith(mockNbSortRequest);
     });
   });
 
-  describe('changeSort', () => {
-
-    beforeEach(() => {
-      component.changeSort(mockNbSortRequest);
-    });
-
-    it('should sort the data', () => {
-      expect(component.dataSource.sort).toHaveBeenCalledWith(mockNbSortRequest);
-    });
-
-    it('should set the sort column correctly', () => {
-      expect(component.sortColumn).toEqual(mockNbSortRequest.column);
-    });
-
-    it('should set the sortDirection property correctly', () => {
-      expect(component.sortDirection).toBe(mockNbSortRequest.direction);
+  describe('onGetDirection', () => {
+    it('should emit the column which has been ordered', () => {
+      const mockColumn = faker.random.word();
+      component.getDirection = jasmine.createSpyObj('getDirection', ['emit']);
+      component.onGetDirection(mockColumn);
+      expect(component.getDirection.emit).toHaveBeenCalledWith(mockColumn);
     });
   });
 
-  describe('getDirection', () => {
-
-    beforeEach(() => {
-      component.changeSort(mockNbSortRequest);
-    });
-
-    it('should return the correct sort direction', () => {
-      const res = component.getDirection(mockColumn);
-      expect(res).toEqual(mockDirection);
-    });
-
-    it('should return NbSortDirection.NONE', () => {
-      const res = component.getDirection('abc');
-      expect(res).toEqual(NbSortDirection.NONE);
-    });
-  });
 });

@@ -5,8 +5,6 @@ import { HomePageState } from '../../store/models/home-module-state.model';
 import { HomeFacadeService } from '../../services/home-facade.service';
 import { map, skip } from 'rxjs/operators';
 import { faGlobe, faClock, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { NbTreeGridDataSourceBuilder } from '@nebular/theme';
-import { FSEntry } from '../../models/stat.models';
 
 @Component({
   selector: 'cv-home-page',
@@ -24,7 +22,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   constructor(
     private homeFacadeService: HomeFacadeService,
-    public dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>
   ) { }
 
   ngOnInit() {

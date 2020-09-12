@@ -1,0 +1,19 @@
+<nb-card>
+  <nb-card-body>
+
+    <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input" placeholder="search...">
+    <div class="table-wrapper">
+      <cv-stat-table
+        [dataSource]="dataSource"
+        [allColumns]="allColumns"
+        [defaultColumns]="defaultColumns"
+        [customColumn]="customColumn"
+        [sortColumn]="sortColumn"
+        [sortDirection]="sortDirection"
+        (changeSort)="changeSort($event)"
+        (getDirection)="getDirection($event)">
+      </cv-stat-table>
+    </div>
+
+  </nb-card-body>
+</nb-card>
