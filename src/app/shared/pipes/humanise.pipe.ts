@@ -1,3 +1,7 @@
+/*
+* Converts camel case strings to human readable format
+*/
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
