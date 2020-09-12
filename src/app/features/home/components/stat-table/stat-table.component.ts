@@ -1,14 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbSortDirection, NbSortRequest } from '@nebular/theme';
 
 @Component({
   selector: 'cv-stat-table',
   templateUrl: './stat-table.component.html',
-  styleUrls: ['./stat-table.component.scss']
+  styleUrls: ['./stat-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatTableComponent implements OnInit {
 
   @Input() data: TreeNode<FSEntry>[];
+  @Input() dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>;
 
   customColumn = 'country';
   defaultColumns = ['totalCases', 'newCases', 'totalDeaths', 'newDeaths', 'critical', 'recovered'];
@@ -18,10 +20,6 @@ export class StatTableComponent implements OnInit {
 
   sortColumn = '';
   sortDirection: NbSortDirection = NbSortDirection.NONE;
-
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
-  }
-
 
   ngOnInit() {
     this.dataSource = this.dataSourceBuilder.create(this.data);
