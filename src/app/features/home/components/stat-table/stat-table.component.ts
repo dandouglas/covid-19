@@ -14,21 +14,18 @@ export class StatTableComponent {
   @Input() allColumns: string[];
   @Input() customColumn: string;
   @Input() defaultColumns: string;
+  @Input() sortColumn: string;
+  @Input() sortDirection: NbSortDirection;
+
   @Output() changeSort = new EventEmitter<NbSortRequest>();
-
-  sortColumn = '';
-  sortDirection: NbSortDirection = NbSortDirection.NONE;
-
+  @Output() getDirection = new EventEmitter<string>();
 
   onChangeSort(sortRequest: NbSortRequest): void {
     this.changeSort.emit(sortRequest);
   }
 
-  getDirection(column: string): NbSortDirection {
-    if (column === this.sortColumn) {
-      return this.sortDirection;
-    }
-    return NbSortDirection.NONE;
+  onGetDirection(column: string): void {
+    this.getDirection.emit(column);
   }
 
 }

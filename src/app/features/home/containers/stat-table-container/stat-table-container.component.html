@@ -8,7 +8,10 @@
         [allColumns]="allColumns"
         [defaultColumns]="defaultColumns"
         [customColumn]="customColumn"
-        (changeSort)="changeSort($event)">
+        [sortColumn]="sortColumn"
+        [sortDirection]="sortDirection"
+        (changeSort)="changeSort($event)"
+        (getDirection)="getDirection($event)">
       </cv-stat-table>
     </div>
 

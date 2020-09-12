@@ -33,12 +33,12 @@ export class StatTableContainerComponent implements OnInit {
     this.sortDirection = sortRequest.direction;
   }
 
-  // getDirection(column: string): NbSortDirection {
-  //   if (column === this.sortColumn) {
-  //     return this.sortDirection;
-  //   }
-  //   return NbSortDirection.NONE;
-  // }
+  getDirection(column: string): NbSortDirection {
+    if (column === this.sortColumn) {
+      return this.sortDirection;
+    }
+    return NbSortDirection.NONE;
+  }
 
 }
 
