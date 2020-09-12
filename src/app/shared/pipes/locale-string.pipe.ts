@@ -1,3 +1,7 @@
+/*
+* Takes a number and converts it to a locale string for readability.
+* For example 50000 would return `50,000`
+*/
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
