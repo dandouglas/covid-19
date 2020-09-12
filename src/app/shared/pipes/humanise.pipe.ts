@@ -1,5 +1,6 @@
 /*
 * Converts camel case strings to human readable format
+* For example 'CamelCaseString' would return 'Camel Case String'
 */
 
 import { Pipe, PipeTransform } from '@angular/core';
