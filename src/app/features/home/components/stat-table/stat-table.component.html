@@ -1,4 +1,4 @@
-<table [nbTreeGrid]="dataSource" nbSort (sort)="changeSort($event)" equalColumnsWidth>
+<table [nbTreeGrid]="dataSource" nbSort (sort)="onChangeSort($event)" equalColumnsWidth>
 
   <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
   <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>

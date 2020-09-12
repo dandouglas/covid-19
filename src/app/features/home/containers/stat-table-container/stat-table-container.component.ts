@@ -27,11 +27,11 @@ export class StatTableContainerComponent implements OnInit {
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
 
-  // changeSort(sortRequest: NbSortRequest): void {
-  //   this.dataSource.sort(sortRequest);
-  //   this.sortColumn = sortRequest.column;
-  //   this.sortDirection = sortRequest.direction;
-  // }
+  changeSort(sortRequest: NbSortRequest): void {
+    this.dataSource.sort(sortRequest);
+    this.sortColumn = sortRequest.column;
+    this.sortDirection = sortRequest.direction;
+  }
 
   // getDirection(column: string): NbSortDirection {
   //   if (column === this.sortColumn) {

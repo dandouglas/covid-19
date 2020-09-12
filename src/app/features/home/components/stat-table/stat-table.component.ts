@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbSortDirection, NbSortRequest } from '@nebular/theme';
+import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { NbTreeGridDataSource, NbSortDirection, NbSortRequest } from '@nebular/theme';
 import { FSEntry } from '../../models/stat.models';
 
 @Component({
@@ -14,15 +14,14 @@ export class StatTableComponent {
   @Input() allColumns: string[];
   @Input() customColumn: string;
   @Input() defaultColumns: string;
+  @Output() changeSort = new EventEmitter<NbSortRequest>();
 
   sortColumn = '';
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
 
-  changeSort(sortRequest: NbSortRequest): void {
-    this.dataSource.sort(sortRequest);
-    this.sortColumn = sortRequest.column;
-    this.sortDirection = sortRequest.direction;
+  onChangeSort(sortRequest: NbSortRequest): void {
+    this.changeSort.emit(sortRequest);
   }
 
   getDirection(column: string): NbSortDirection {
