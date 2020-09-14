@@ -1,4 +1,4 @@
-import { CountryStat, UserLocation } from '../../models/stat.models';
+import { CountryStat } from '../../models/stat.models';
 
 export interface HomeState {
     stats: CountryStat[];

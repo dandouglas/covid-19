@@ -1,7 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { HomeState } from '../models/home-module-state.model';
 import { homeStoreKey } from '../models/home-app-state.model';
-import { CountryStat, HomeDataStats } from '../../models/stat.models';
+import { HomeDataStats } from '../../models/stat.models';
+import { findAll, nonCountryFilter, parseNewValues, tableDataMap } from '../../../../shared/utilities/helper.functions';
 
 const selectHomeState = createFeatureSelector<HomeState>(homeStoreKey);
 
@@ -46,36 +47,3 @@ export const homeSelectors = {
   selectUserLocation,
   selectTableData,
 };
-
-// TODO: Move helper methods to another file
-
-function findAll(stat: CountryStat): boolean {
-  return stat.country === 'All';
-}
-
-function nonCountryFilter(stat: CountryStat): boolean {
-  return stat.country !== 'All' && stat.country !== 'Europe' && stat.country !== 'North-America'
-    && stat.country !== 'Asia' && stat.country !== 'Diamond-Princess-';
-}
-
-function tableDataMap(stat: CountryStat): any {
-  return {
-    data: {
-      country: stat.country,
-      totalCases: stat.cases.total,
-      newCases: stat.cases.new !== null ? parseInt(stat.cases.new.replace('+', ''), 10) : null,
-      totalDeaths: stat.deaths.total,
-      newDeaths: stat.deaths.new !== null ? parseInt(stat.deaths.new.replace('+', ''), 10) : null,
-      critical: stat.cases.critical,
-      recovered: stat.cases.active,
-    }
-  };
-}
-
-/*
-  * Takes a string with a + symbol at the beginning followed by a number (eg "+123")
-  * and returns the number value
-  */
-function parseNewValues(val: string): number {
-  return parseInt(val.replace('+', ''), 10);
-}

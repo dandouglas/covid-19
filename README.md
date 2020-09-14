@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
+It has been built to follow a "smart dumb" architecture.  
+
+Containers are smart components as they have external dependencies and contain logic but are not routable.
+
+Pages are smart components but are routable.
+
+Components are "dumb components" as they have not external dependencies or logic.  They are purely for display.
+
+The project also utilises NgRx.. all this is not really necessary for such a small project but it's a good example of how large scale application could be built
+with Angular.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
