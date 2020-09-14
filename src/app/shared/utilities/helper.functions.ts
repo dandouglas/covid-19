@@ -1,4 +1,4 @@
-import { CountryStat } from '../../features/home/models/stat.models';
+import { CountryStat, LocalStats } from '../../features/home/models/stat.models';
 
 export function findAll(stat: CountryStat): boolean {
   return stat.country === 'All';
@@ -20,7 +20,7 @@ export function parseNewValues(val: string): number {
   return parseInt(val.replace('+', ''), 10);
 }
 
-export function tableDataMap(stat: CountryStat): any {
+export function tableDataMap(stat: CountryStat): LocalStats {
   return {
     data: {
       country: stat.country,

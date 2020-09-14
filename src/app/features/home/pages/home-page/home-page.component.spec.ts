@@ -66,7 +66,7 @@ describe('HomePageComponent', () => {
     });
 
     it('should define the data correctly', async () => {
-      const data = await component.data$.toPromise();
+      const data = await component.stats$.toPromise();
       expect(data).toEqual(mockData);
     });
 

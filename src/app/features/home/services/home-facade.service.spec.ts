@@ -33,12 +33,12 @@ describe('HomeFacadeService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('getTableData', () => {
+  describe('getStats', () => {
     it('should get the table data from the store', () => {
       mockStore.select.calls.reset();
       const service: HomeFacadeService = TestBed.inject(HomeFacadeService);
 
-      expect(service.getTableData()).toBeObservable(mockSelectResult);
+      expect(service.getStats()).toBeObservable(mockSelectResult);
     });
   });
 

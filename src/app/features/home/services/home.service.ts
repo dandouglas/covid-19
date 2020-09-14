@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { HomeDataStats, UserLocation } from '../models/stat.models';
+import { HomeDataStats, LocalStats, UserLocation } from '../models/stat.models';
 import { DOCUMENT } from '@angular/common';
 import { combineLatest, Observable, Observer } from 'rxjs';
 import { map, skip } from 'rxjs/operators';
@@ -67,7 +67,7 @@ export class HomeService {
     });
   }
 
-  getLocalStats(data$: Observable<HomeDataStats>, userLocation$: Observable<string>): Observable<any> {
+  getLocalStats(data$: Observable<HomeDataStats>, userLocation$: Observable<string>): Observable<LocalStats> {
     return combineLatest([data$, userLocation$]).pipe(
       skip(1),
       map(([stats, location]) => {

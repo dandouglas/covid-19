@@ -3,7 +3,7 @@ import { HomeState, HomePageState } from '../store/models/home-module-state.mode
 import { Store, Action } from '@ngrx/store';
 import { homeSelectors } from '../store/selectors/home-selectors';
 import { Observable } from 'rxjs';
-import { HomeDataStats } from '../models/stat.models';
+import { HomeDataStats, LocalStats } from '../models/stat.models';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class HomeFacadeService {
     this.store.dispatch(action);
   }
 
-  getTableData(): Observable<HomeDataStats> {
+  getStats(): Observable<HomeDataStats> {
     return this.store.select(homeSelectors.selectTableData());
   }
 

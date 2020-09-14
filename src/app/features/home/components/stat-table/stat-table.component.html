@@ -26,7 +26,7 @@
   <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
     <th nbTreeGridHeaderCell [nbSortHeader]="onGetDirection(column)" *nbTreeGridHeaderCellDef>{{column | humanise}}</th>
     <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column] | localeString}} <span
-        *ngIf="!row.data[column]">-</span></td>
+        *ngIf="row.data[column] === null">-</span></td>
   </ng-container>
 
 </table>

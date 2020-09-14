@@ -46,3 +46,15 @@ export interface FSEntry {
   critical: string;
   recovered: string;
 }
+
+export interface LocalStats {
+  data: {
+    country: string,
+    totalCases: number,
+    newCases: number,
+    totalDeaths: number,
+    newDeaths: number,
+    critical: number,
+    recovered: number,
+  };
+}

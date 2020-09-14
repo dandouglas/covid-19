@@ -1,6 +1,6 @@
 <main>
   <ng-container *ngIf="{
-    stats: data$ | async,
+    stats: stats$ | async,
     pageState: homePageState$ | async,
     localStats : localStats$ | async
   } as pageData">
