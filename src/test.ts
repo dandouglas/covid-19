@@ -6,7 +6,9 @@ import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
-
+import 'ng-mocks/dist/jasmine';
+// uncomment in case if existing tests are with spies already.
+// jasmine.getEnv().allowRespy(true);
 declare const require: any;
 
 // First, initialize the Angular testing environment.
