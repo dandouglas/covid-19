@@ -29,9 +29,9 @@ describe('HomePageComponent', () => {
   beforeEach(async(() => {
     mockHomeFacadeService = jasmine.createSpyObj('mockHomeFacadeService', {
       dispatch: () => {},
-      getTableData: of(mockData),
       getHomePageState: of(mockHomePageState),
-      getUserLocation: of(mockLocation)
+      getUserLocation: of(mockLocation),
+      getStats: of(mockData)
     });
 
     TestBed.configureTestingModule({
@@ -62,7 +62,7 @@ describe('HomePageComponent', () => {
     });
 
     it('should get the data', () => {
-      expect(mockHomeFacadeService.getTableData).toHaveBeenCalled();
+      expect(mockHomeFacadeService.getStats).toHaveBeenCalled();
     });
 
     it('should define the data correctly', async () => {
