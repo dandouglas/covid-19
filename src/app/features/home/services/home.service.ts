@@ -24,18 +24,27 @@ export class HomeService {
             longitude: position.coords.longitude
           });
           observer.complete();
+        }, err => {
+          console.error(err);
+          this.useDefaultLocation(observer);
         });
       } else {
-        // If the location can't be fetched set lat lng to London coords
-        const defaultLocation: UserLocation = {
-          latitude: 51.5,
-          longitude: 0.12
-        };
-        observer.next(defaultLocation);
-        observer.complete();
+        console.error('Unable to get your location as your browser does not support this feature');
+        this.useDefaultLocation(observer);
       }
     });
   }
+
+  useDefaultLocation(observer: any): void {
+    // If the location can't be fetched set lat lng to London coords
+    const defaultLocation: UserLocation = {
+      latitude: 51.5,
+      longitude: 0.12
+    };
+    observer.next(defaultLocation);
+    observer.complete();
+  }
+
 
   getCountry(results: google.maps.GeocoderResult[]): string {
     let country: string;
